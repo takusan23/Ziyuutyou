@@ -1,0 +1,15 @@
+{
+  "title": "AndroidStudioで変に改行されるのを直す",
+  "created_at": "2020-05-17T00:54:03.000Z",
+  "tags": [
+    "Android",
+    "AndroidStudio"
+  ],
+  "bodyContent": "自分用メモ\n\n# 引数の部分改行しすぎ問題\n```kotlin\noverride fun onCreateView(\n    inflater: LayoutInflater,\n    container: ViewGroup?,\n    savedInstanceState: Bundle?\n): View? {\n    return inflater.inflate(R.layout.fragment_screen_roration, container, false)\n}\n```\n引数の部分が改行されててきつい\n\n# 設定\n設定を開いて\nEditor > Code Style > Kotlin と進んで  \n`Wapping and Brances`の`warp if long`と`Chop down if long`を全部`Do not warp`にします。  \n`Warp always`のところはやんなくていいと思う\n\n{%asset_img setting.png setting%}\n\n終わり",
+  "bodyHtml": "<p>自分用メモ</p>\n<h1>引数の部分改行しすぎ問題</h1>\n<pre><code class=\"hljs\"><span class=\"hljs-keyword\">override</span> <span class=\"hljs-function\"><span class=\"hljs-keyword\">fun</span> <span class=\"hljs-title\">onCreateView</span><span class=\"hljs-params\">(\n    inflater: <span class=\"hljs-type\">LayoutInflater</span>,\n    container: <span class=\"hljs-type\">ViewGroup</span>?,\n    savedInstanceState: <span class=\"hljs-type\">Bundle</span>?\n)</span></span>: View? {\n    <span class=\"hljs-keyword\">return</span> inflater.inflate(R.layout.fragment_screen_roration, container, <span class=\"hljs-literal\">false</span>)\n}</code></pre><p>引数の部分が改行されててきつい</p>\n<h1>設定</h1>\n<p>設定を開いて\nEditor &gt; Code Style &gt; Kotlin と進んで<br>\n<code>Wapping and Brances</code>の<code>warp if long</code>と<code>Chop down if long</code>を全部<code>Do not warp</code>にします。<br>\n<code>Warp always</code>のところはやんなくていいと思う</p>\n<p>{%asset_img setting.png setting%}</p>\n<p>終わり</p>\n",
+  "dir": "contents/posts/json",
+  "base": "AndroidStudioで変に改行されるのを直す.json",
+  "ext": ".json",
+  "sourceBase": "AndroidStudioで変に改行されるのを直す.md",
+  "sourceExt": ".md"
+}

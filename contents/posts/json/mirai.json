@@ -1,0 +1,14 @@
+{
+  "title": "未来の記事",
+  "created_at": "2020-06-02 00:00:00",
+  "tags": [
+    "そのた"
+  ],
+  "bodyContent": "なにこれ？",
+  "bodyHtml": "<p>なにこれ？</p>\n",
+  "dir": "contents/posts/json",
+  "base": "mirai.json",
+  "ext": ".json",
+  "sourceBase": "mirai.md",
+  "sourceExt": ".md"
+}

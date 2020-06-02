@@ -1,0 +1,51 @@
+/* フォント設定 */
+
+@font-face {
+    font-family: 'Koruri Regular';
+    src: url('../fonts/Koruri-Regular-sub.eot');
+    src: url('../fonts/Koruri-Regular-sub.eot?#iefix') format('embedded-opentype'), url('../fonts/Koruri-Regular-sub.woff') format('woff'), url('../fonts/Koruri-Regular-sub.ttf') format('truetype');
+}
+
+/* VuetifyのせいでCodeタグに勝手にCSS適用されるので強制上書き */
+
+.v-application code {
+    box-shadow: initial !important;
+    border: 1px solid gray;
+    border-radius: 5px !important;
+    font-family: 'Koruri Regular';
+    margin: 10px;
+}
+
+.v-application code, .v-application kbd {
+    font-weight: initial !important;
+}
+
+/* VuetifyはCodeに勝手に色付ける割にはh1とかには付けないらしいので */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #5870cb;
+}
+
+/* ほばー */
+
+.titleHover:hover {
+    color: #5870cb;
+    transition: color 0.5s;
+}
+
+/* Table（表）に線が入らないので調整 */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin: 10px;
+}
+
+table tr {
+    border-bottom: solid 1px #000;
+}
+
+table td {
+    padding: 10px;
+}

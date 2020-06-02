@@ -1,0 +1,89 @@
+<template>
+  <v-app>
+    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
+      <!-- takusan_23 と 前のブログ　の部分。 -->
+      <template v-slot:prepend>
+        <v-list-item two-line>
+          <!-- アイコン -->
+          <v-list-item-avatar>
+            <img src="https://imgur.com/zDJhEWP.gif" />
+          </v-list-item-avatar>
+          <!-- takusan_23 の部分 -->
+          <v-list-item-content>
+            <v-list-item-title>takusan23</v-list-item-title>
+            <v-list-item-subtitle>
+              <v-icon color="indigo">mdi-book</v-icon>
+              <a href="https://takusan23.github.io/Bibouroku/" target="_blank">前のブログ</a>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+      <!-- ダークモードスイッチ -->
+      <v-switch
+        class="text-center ma-2"
+        :append-icon="`${$vuetify.theme.dark ? 'mdi-weather-night' : 'mdi-weather-sunny'}`"
+        v-model="$vuetify.theme.dark"
+        label="テーマ切り替え"
+      ></v-switch>
+      <!-- 区切り線 -->
+      <v-divider></v-divider>
+      <!-- メニュー -->
+      <v-list nav>
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar :clipped-left="clipped" color="secondary" extended>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-toolbar-title id="title" v-text="this.$nuxt.$route.name" />
+      <v-spacer />
+    </v-app-bar>
+    <v-content>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-content>
+    <v-footer :fixed="fixed" app>
+      <span>takusan_23 &copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
+  </v-app>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      clipped: false,
+      drawer: false,
+      fixed: false,
+      items: [
+        {
+          icon: "mdi-home-outline",
+          title: "トップページ（なにに使うかは未定）",
+          to: "/"
+        },
+        {
+          icon: "mdi-format-list-checkbox",
+          title: "記事一覧",
+          to: "/posts/page/1"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "About",
+          to: "/pages/about"
+        }
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: "Vuetify.js"
+    };
+  }
+};
+</script>
