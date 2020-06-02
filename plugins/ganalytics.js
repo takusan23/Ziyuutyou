@@ -1,7 +1,7 @@
 // Google Analytics と Nuxt.js を繋ぐなにか
 
 // トラッキングID
-const TRAKING_ID = ""
+const TRAKING_ID = "UA-149954537-2"
 
 export default ({ app }) => {
     /*

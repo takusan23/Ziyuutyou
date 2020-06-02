@@ -13,7 +13,8 @@
     border: 1px solid gray;
     border-radius: 5px !important;
     font-family: 'Koruri Regular';
-    margin: 10px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .v-application code, .v-application kbd {

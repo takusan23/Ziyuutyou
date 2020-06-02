@@ -31,7 +31,6 @@ const generatePagenationRoutesList = () => {
       dynamicRouterPathList.push(`/posts/page/${i}`)
     }
   }
-  console.log(dynamicRouterPathList)
   return dynamicRouterPathList
 }
 
@@ -147,7 +146,7 @@ export default {
   manifest: {
     name: 'たくさんの自由帳',
     title: 'たくさんの自由帳',
-    'og:title': '遅れます.me',
+    'og:title': 'たくさんの自由帳',
     lang: 'ja',
     theme_color: '#8c9eff',
     background_color: '#5870cb',

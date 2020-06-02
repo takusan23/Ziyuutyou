@@ -44,7 +44,7 @@ npm run dev
     - ~~Black holeよりも深い~~
     - npmコマンドでコケた時はまず消して`npm install`する。
 - plugins
-    - わからん（使ってない）
+    - GoogleAnalyticsのためのJSが一個だけ置いてある。
 - static
     - 静的サイトジェネレートのときのfaviconとか？
 - store
