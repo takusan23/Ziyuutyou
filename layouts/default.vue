@@ -1,16 +1,16 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
-      <!-- takusan_23 と 前のブログ　の部分。 -->
+      <!-- Drawerのヘッダー部分 -->
       <template v-slot:prepend>
         <v-list-item two-line>
           <!-- アイコン -->
           <v-list-item-avatar>
             <img src="https://imgur.com/zDJhEWP.gif" />
           </v-list-item-avatar>
-          <!-- takusan_23 の部分 -->
+          <!-- 自由帳 の部分 -->
           <v-list-item-content>
-            <v-list-item-title>takusan23</v-list-item-title>
+            <v-list-item-title>{{drawerTitle}}</v-list-item-title>
             <v-list-item-subtitle>
               <v-icon color="indigo">mdi-book</v-icon>
               <a href="https://takusan23.github.io/Bibouroku/" target="_blank">前のブログ</a>
@@ -82,7 +82,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Vuetify.js"
+      title: "Vuetify.js",
+      drawerTitle: "たくさんの自由帳"
     };
   }
 };

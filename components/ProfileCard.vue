@@ -4,7 +4,13 @@
   <v-card class="ma-2 pa-2" elevation="10">
     <v-card-title class="headline">なんかあればどうぞ</v-card-title>
     <!-- アドレス集 -->
-    <v-list-item v-for="item in links" :key="item.title" :href="item.address" target="_blank">
+    <v-list-item
+      v-for="item in links"
+      :key="item.title"
+      :href="item.address"
+      target="_blank"
+      :rel="item.isMastodon ? 'me' : ''" 
+    >
       <v-list-item-icon>
         <v-icon v-text="item.icon"></v-icon>
       </v-list-item-icon>
@@ -25,7 +31,8 @@ export default {
       {
         name: "Mastodon",
         icon: "mdi-mastodon",
-        address: "https://best-friends.chat/@takusan_23"
+        address: "https://best-friends.chat/@takusan_23",
+        isMastodon: true // isMastodon: true で aタグに自動で rel="me" 属性をつける。
       },
       {
         name: "Misskey",
