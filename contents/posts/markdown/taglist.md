@@ -1,6 +1,6 @@
 ---
 title: タグのページ作った
-created_at: 2020-06-03 18:48:00
+created_at: 2020-06-03
 tags:
 - その他
 - Nuxt.js
