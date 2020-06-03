@@ -5,14 +5,7 @@
       <v-icon>mdi-file-upload-outline</v-icon>
       <time>{{ (new Date(this.created_at)).toLocaleDateString() }} 投稿</time>
     </div>
-    <v-chip
-      class="ma-1"
-      small
-      color="indigo"
-      text-color="white"
-      v-for="tag in this.tags"
-      :key="tag"
-    >{{tag}}</v-chip>
+    <TagGroup :tags="this.tags"></TagGroup>
     <!-- 区切り線 -->
     <v-divider></v-divider>
     <!-- 本文 bodyHtml === this.bodyHtml だと -->
@@ -24,7 +17,7 @@
       <v-row align="center" justify="end">
         <!-- Mastodon Share -->
         <v-menu offset-y>
-          <template  v-slot:activator="{ on }">
+          <template v-slot:activator="{ on }">
             <v-btn text color="blue" dark v-on="on">
               <v-icon>mdi-mastodon</v-icon>Mastodonで共有？
             </v-btn>
@@ -42,6 +35,7 @@
 
 <script>
 import { sourceFileArray } from "../../contents/posts/summary.json";
+import TagGroup from "../../components/TagGroup.vue";
 
 export default {
   // 記事があるかどうか。JSONのsourceFileArrayの配列に含まれているか確認している。
@@ -65,7 +59,7 @@ export default {
     //   document.getElementById("content").innerText.length
     // }`;
   },
-  // さあ？
+  // タイトル変更に使う
   head() {
     const title = `${this.title}`;
     const url = `posts/${this.params.slug}/`;
@@ -79,7 +73,7 @@ export default {
     };
   },
   data: () => ({
-    instans: ["best-friends.chat", "pawoo.net"]
+    instans: ["best-friends.chat", "pawoo.net"] // 共有先インスタンス名
   }),
   methods: {
     /**
@@ -92,6 +86,9 @@ export default {
         "_brank"
       );
     }
+  },
+  components: {
+    TagGroup
   }
 };
 </script>

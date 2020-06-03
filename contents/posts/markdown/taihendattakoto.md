@@ -3,6 +3,7 @@ title: これ作るのに大変だったこと
 created_at: 2020-06-02
 tags:
 - その他
+- 自作ブログ
 ---
 
 Hexoってすごいんだなって。
@@ -12,8 +13,9 @@ Hexoってすごいんだなって。
 
 ### Vuetifyが`<code>`に色つける。
 
-Vuetifyくんが勝手に色を付けてくれます。  
-文字の太さも設定しているので`!important`でCSS強制上書きしてとりあえず対応しました。  
+Vuetifyくんが勝手に色を付けてくれます。が、なんかいまいちなので頑張ってCSS書いて直したいんですが、  
+Vuetifyくんが許してくれません。？  
+しかたないので`!important`で黙らせました。    
 
 assets/css/styles.css
 ```css
@@ -83,15 +85,14 @@ Kotlinの`sortBy{}`とは使い方が違っててちょっと迷った。
 ```js
 /** 次のページ機能をつける。そうしないと記事一覧にどばーってなってスクロール大変になる */
 const generatePagenationRoutesList = () => {
-  // 何ページ必要か計算する（10で割ればいいっしょ）
-  const calc = Math.floor(postsJSON.sourceFileArray.length / PAGE_LIMIT) - 1
+  // 何ページ必要か計算する（10で割ればいいっしょ）。ただ1ページ目は最低限必要なので1足す
+  const calc = Math.floor(postsJSON.sourceFileArray.length / PAGE_LIMIT) + 1
   // ページ分だけ動的ルーティングの配列出す？
   const dynamicRouterPathList = []
-  if (calc > 0) {
-    // 0 より大きいとき
-    for (let i = 1; i <= calc; i++) {
-      dynamicRouterPathList.push(`/posts/page/${i}`)
-    }
+  // console.log(`ページ数：${calc} / 記事数：${postsJSON.sourceFileArray.length}`)
+  // ページ生成。1ページ目から作るので1からスタート
+  for (let i = 1; i <= calc; i++) {
+    dynamicRouterPathList.push(`/posts/page/${i}`)
   }
   return dynamicRouterPathList
 }
@@ -109,7 +110,7 @@ const generateRoutes = callback => {
 
 これで`posts/page/1`などが生成されるようになります（多分）
 
-~~この記事書いてる途中でなんでこれ動いてんのかよくわからなくなったのは内緒~~
+~~この記事書いてる途中でなんでこれ動いてんのかよくわからなくなったのは内緒~~←やっぱり生成できてなかったので直しました。（2020/06/03）
 
 ## 特に大変じゃなかったこと
 
@@ -158,7 +159,7 @@ $vuetify.theme.dark = true
 
 三項演算子使うの初めてかもしれない（まずKotlinにはないし）  
 
-ところで`$`←これなに？
+ところで$←これなに？
 
 ## おわりに
 学校始まるわ。早起きつっら  

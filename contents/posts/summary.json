@@ -1,16 +1,16 @@
 {
   "fileMap": {
-    "contents/posts/json/Android11のMANAGE-EXTERNAL-STORAGEを試す.json": {
-      "title": "Android11のMANAGE_EXTERNAL_STORAGEを試す",
-      "created_at": "2020-05-04T00:44:24.000Z",
+    "contents/posts/json/taihendattakoto.json": {
+      "title": "これ作るのに大変だったこと",
+      "created_at": "2020-06-02T00:00:00.000Z",
       "tags": [
-        "Android",
-        "Android11"
+        "その他",
+        "自作ブログ"
       ],
       "dir": "contents/posts/json",
-      "base": "Android11のMANAGE-EXTERNAL-STORAGEを試す.json",
+      "base": "taihendattakoto.json",
       "ext": ".json",
-      "sourceBase": "Android11のMANAGE-EXTERNAL-STORAGEを試す.md",
+      "sourceBase": "taihendattakoto.md",
       "sourceExt": ".md"
     },
     "contents/posts/json/first.json": {
@@ -18,7 +18,8 @@
       "created_at": "2020-05-30 21:10:00",
       "tags": [
         "Nuxt.js",
-        "Markdown"
+        "Markdown",
+        "JavaScript"
       ],
       "dir": "contents/posts/json",
       "base": "first.json",
@@ -26,105 +27,19 @@
       "sourceBase": "first.md",
       "sourceExt": ".md"
     },
-    "contents/posts/json/AndroidのRoomを触ってみた.json": {
-      "title": "AndroidのRoomを触ってみた",
-      "created_at": "2020-05-27T00:17:21.000Z",
+    "contents/posts/json/taglist.json": {
+      "title": "タグのページ作った",
+      "created_at": "2020-06-03T18:48:00.000Z",
       "tags": [
-        "Android",
-        "Room",
-        "Kotlin",
-        "データベース"
+        "その他",
+        "Nuxt.js",
+        "自作ブログ",
+        "JavaScript"
       ],
       "dir": "contents/posts/json",
-      "base": "AndroidのRoomを触ってみた.json",
+      "base": "taglist.json",
       "ext": ".json",
-      "sourceBase": "AndroidのRoomを触ってみた.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/AndroidStudioで変に改行されるのを直す.json": {
-      "title": "AndroidStudioで変に改行されるのを直す",
-      "created_at": "2020-05-17T00:54:03.000Z",
-      "tags": [
-        "Android",
-        "AndroidStudio"
-      ],
-      "dir": "contents/posts/json",
-      "base": "AndroidStudioで変に改行されるのを直す.json",
-      "ext": ".json",
-      "sourceBase": "AndroidStudioで変に改行されるのを直す.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/OkHttpでダウンロード進捗が知りたい！.json": {
-      "title": "OkHttpでダウンロード進捗が知りたい！",
-      "created_at": "2020-05-09T00:35:36.000Z",
-      "tags": [
-        "Android",
-        "OkHttp",
-        "Kotlin"
-      ],
-      "dir": "contents/posts/json",
-      "base": "OkHttpでダウンロード進捗が知りたい！.json",
-      "ext": ".json",
-      "sourceBase": "OkHttpでダウンロード進捗が知りたい！.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/ExoPlayerにオフライン再生機能あるらしいので使ってみる.json": {
-      "title": "ExoPlayerにオフライン再生機能あるらしいので使ってみる",
-      "created_at": "2020-05-09T20:21:48.000Z",
-      "tags": [
-        "Android",
-        "ExoPlayer",
-        "HLS",
-        "Kotlin"
-      ],
-      "dir": "contents/posts/json",
-      "base": "ExoPlayerにオフライン再生機能あるらしいので使ってみる.json",
-      "ext": ".json",
-      "sourceBase": "ExoPlayerにオフライン再生機能あるらしいので使ってみる.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/たちみどろいどのキャッシュ機能について.json": {
-      "title": "たちみどろいどのキャッシュ機能について",
-      "created_at": "2020-04-08T18:54:12.000Z",
-      "tags": [
-        "Android",
-        "たちみどろいど",
-        "ニコニコ動画"
-      ],
-      "dir": "contents/posts/json",
-      "base": "たちみどろいどのキャッシュ機能について.json",
-      "ext": ".json",
-      "sourceBase": "たちみどろいどのキャッシュ機能について.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/ExoPlayerとMediaSessionを何となく使う.json": {
-      "title": "ExoPlayerとMediaSessionを何となく使う",
-      "created_at": "2020-05-10T22:33:50.000Z",
-      "tags": [
-        "Android",
-        "MediaSession",
-        "ExoPlayer",
-        "Kotlin"
-      ],
-      "dir": "contents/posts/json",
-      "base": "ExoPlayerとMediaSessionを何となく使う.json",
-      "ext": ".json",
-      "sourceBase": "ExoPlayerとMediaSessionを何となく使う.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/MastodonとMisskey同時に見れるクライアント作った？.json": {
-      "title": "MastodonとMisskey同時に見れるクライアント作った？",
-      "created_at": "2020-05-16T20:46:04.000Z",
-      "tags": [
-        "Android",
-        "Kotlin",
-        "Mastodon",
-        "Misskey"
-      ],
-      "dir": "contents/posts/json",
-      "base": "MastodonとMisskey同時に見れるクライアント作った？.json",
-      "ext": ".json",
-      "sourceBase": "MastodonとMisskey同時に見れるクライアント作った？.md",
+      "sourceBase": "taglist.md",
       "sourceExt": ".md"
     },
     "contents/posts/json/usersmanual.json": {
@@ -132,68 +47,23 @@
       "created_at": "2020-05-31 21:10:00",
       "tags": [
         "とりせつ",
+        "その他",
         "Markdown",
-        "Nuxt.js"
+        "Nuxt.js",
+        "自作ブログ",
+        "JavaScript"
       ],
       "dir": "contents/posts/json",
       "base": "usersmanual.json",
       "ext": ".json",
       "sourceBase": "usersmanual.md",
       "sourceExt": ".md"
-    },
-    "contents/posts/json/全コメントきしめんやりたい.json": {
-      "title": "全コメントきしめんやりたい",
-      "created_at": "2020-05-20T23:06:17.000Z",
-      "tags": [
-        "Android",
-        "たちみどろいど",
-        "ニコニコ動画"
-      ],
-      "dir": "contents/posts/json",
-      "base": "全コメントきしめんやりたい.json",
-      "ext": ".json",
-      "sourceBase": "全コメントきしめんやりたい.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/画面回転しても尊厳損傷しないようにonSaveInstanceState使う.json": {
-      "title": "画面回転しても尊厳損傷しないようにonSaveInstanceState使う",
-      "created_at": "2020-05-17T00:32:19.000Z",
-      "tags": [
-        "Android",
-        "Kotlin"
-      ],
-      "dir": "contents/posts/json",
-      "base": "画面回転しても尊厳損傷しないようにonSaveInstanceState使う.json",
-      "ext": ".json",
-      "sourceBase": "画面回転しても尊厳損傷しないようにonSaveInstanceState使う.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/taihendattakoto.json": {
-      "title": "これ作るのに大変だったこと",
-      "created_at": "2020-06-02T00:00:00.000Z",
-      "tags": [
-        "その他"
-      ],
-      "dir": "contents/posts/json",
-      "base": "taihendattakoto.json",
-      "ext": ".json",
-      "sourceBase": "taihendattakoto.md",
-      "sourceExt": ".md"
     }
   },
   "sourceFileArray": [
-    "contents/posts/markdown/Android11のMANAGE-EXTERNAL-STORAGEを試す.md",
-    "contents/posts/markdown/AndroidStudioで変に改行されるのを直す.md",
-    "contents/posts/markdown/AndroidのRoomを触ってみた.md",
-    "contents/posts/markdown/ExoPlayerとMediaSessionを何となく使う.md",
-    "contents/posts/markdown/ExoPlayerにオフライン再生機能あるらしいので使ってみる.md",
     "contents/posts/markdown/first.md",
-    "contents/posts/markdown/MastodonとMisskey同時に見れるクライアント作った？.md",
-    "contents/posts/markdown/OkHttpでダウンロード進捗が知りたい！.md",
+    "contents/posts/markdown/taglist.md",
     "contents/posts/markdown/taihendattakoto.md",
-    "contents/posts/markdown/usersmanual.md",
-    "contents/posts/markdown/たちみどろいどのキャッシュ機能について.md",
-    "contents/posts/markdown/全コメントきしめんやりたい.md",
-    "contents/posts/markdown/画面回転しても尊厳損傷しないようにonSaveInstanceState使う.md"
+    "contents/posts/markdown/usersmanual.md"
   ]
 }

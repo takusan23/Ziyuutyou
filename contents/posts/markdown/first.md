@@ -4,6 +4,7 @@ created_at: '2020-05-30 21:10:00'
 tags:
 - Nuxt.js
 - Markdown
+- JavaScript
 ---
 **Nuxt.js+processmd**でブログ作るよ
 

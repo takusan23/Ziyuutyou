@@ -2,28 +2,9 @@
 
 <template>
   <v-app>
-    <v-card
-      class="ma-2 pa-5"
-      v-for="item in blogItems"
-      :key="item.title"
-      :to="`../${item.fileName}`"
-    >
-      <div class="headline mb-1 titleHover">{{item.title}}</div>
-      <v-divider></v-divider>
-      <div class="post-meta pa-2">
-        <v-icon>mdi-file-upload-outline</v-icon>
-        <time>{{ (new Date(item.created_at)).toLocaleDateString() }} 投稿</time>
-      </div>
-      <v-chip
-        class="ma-1"
-        small
-        color="indigo"
-        text-color="white"
-        v-for="tag in item.tags"
-        :key="tag"
-      >{{tag}}</v-chip>
-    </v-card>
-
+    <!-- 記事表示 -->
+    <BlogItemCard :blogItems="blogItems"></BlogItemCard>
+    <!-- 次のページ・前のページ -->
     <v-row align="center" justify="center">
       <v-btn
         id="next_btn"
@@ -48,6 +29,7 @@
 
 <script>
 import { sourceFileArray, fileMap } from "../../../contents/posts/summary.json";
+import BlogItemCard from "../../../components/BlogItemCard.vue";
 
 // 一度に表示する記事の数
 const PAGE_LIMIT = 10;
@@ -110,6 +92,12 @@ export default {
   },
   methods: {
     //
-  }
+  },
+  components: {
+    BlogItemCard
+  },
+  head: () => ({
+    title: "記事一覧"
+  })
 };
 </script>

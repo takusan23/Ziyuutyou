@@ -19,17 +19,29 @@ const sourceFileNameToUrl = (filepath, folderName) => {
   return `/${folderName}/${name}`
 }
 
+/** タグが含まれている記事一覧のパス配列生成関数。 */
+const generateTagPageRoutesList = () => {
+  // 記事オブジェクト一覧配列を生成する。キーだけの配列にしてmapで取り出す
+  const blogItems = Object.keys(postsJSON.fileMap).map(key => postsJSON.fileMap[key])
+  // タグだけの配列を作る
+  const allTagItems = blogItems.map(blog => blog.tags).flat()
+  // 被りを消す。new Set()でいいらしい
+  const tagList = [...new Set(allTagItems)]
+  // パス生成。こんな感じの→ /posts/tag/自作ブログ みたいな感じに
+  const pathList = tagList.map(tagName => `/posts/tag/${tagName}`)
+  return pathList
+}
+
 /** 次のページ機能をつける。そうしないと記事一覧にどばーってなってスクロール大変になる */
 const generatePagenationRoutesList = () => {
-  // 何ページ必要か計算する（10で割ればいいっしょ）
-  const calc = Math.floor(postsJSON.sourceFileArray.length / PAGE_LIMIT) - 1
+  // 何ページ必要か計算する（10で割ればいいっしょ）。ただ1ページ目は最低限必要なので1足す
+  const calc = Math.floor(postsJSON.sourceFileArray.length / PAGE_LIMIT) + 1
   // ページ分だけ動的ルーティングの配列出す？
   const dynamicRouterPathList = []
-  if (calc > 0) {
-    // 0 より大きいとき
-    for (let i = 1; i <= calc; i++) {
-      dynamicRouterPathList.push(`/posts/page/${i}`)
-    }
+  // console.log(`ページ数：${calc} / 記事数：${postsJSON.sourceFileArray.length}`)
+  // ページ生成。1ページ目から作るので1からスタート
+  for (let i = 1; i <= calc; i++) {
+    dynamicRouterPathList.push(`/posts/page/${i}`)
   }
   return dynamicRouterPathList
 }
@@ -46,7 +58,7 @@ const generatePagesFileDynamicRoutesList = pagesJSON.sourceFileArray.map(sourceF
 
 /** 静的サイトジェネレート関数。配列(pages/とposts/)くっつける */
 const generateRoutes = callback => {
-  callback(null, [generatePagesFileDynamicRoutesList, generateDynamicRoutesList, generatePagenationRoutesList()].flat())
+  callback(null, [generatePagesFileDynamicRoutesList, generateDynamicRoutesList, generatePagenationRoutesList(), generateTagPageRoutesList()].flat())
 }
 
 export default {

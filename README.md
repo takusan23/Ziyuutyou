@@ -1,22 +1,36 @@
 # ziyuutyou
 
-> Bibouroku no daitai
+自由帳。  
+Nuxt.jsでブログ自作できるらしいので作ってみた。  
+[備忘録](https://takusan23.github.io/Bibouroku/)の代替に・・・なるかな？
 
-## Build Setup
-
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+## 起動方法
+初回時は以下の1行を入れてね
+```console
+npm install
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+それから（2回目以降も）
+```console
+npm run dev
+```
+
+## 記事の保存場所
+
+`contents/posts/markdown` にあります。
+
+書いたら
+
+```console
+npm run markdown
+```
+
+を実行してJSONファイルを書き出してください。  
+
+## 静的サイトジェネレート
+
+をするとHTMLファイルが生成されます。  
+
+```console
+npm run generate
+```

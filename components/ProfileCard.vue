@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  components: {},
   data: () => ({
     listItem: false,
     links: [
@@ -25,6 +26,11 @@ export default {
         name: "Mastodon",
         icon: "mdi-mastodon",
         address: "https://best-friends.chat/@takusan_23"
+      },
+      {
+        name: "Misskey",
+        icon: "mdi-lan-connect",
+        address: "https://misskey.m544.net/@takusan_23"
       },
       {
         name: "GitHub",
