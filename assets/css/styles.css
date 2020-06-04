@@ -15,6 +15,7 @@
     font-family: 'Koruri Regular';
     margin: 5px;
     padding: 5px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4) !important;
 }
 
 .v-application code, .v-application kbd {

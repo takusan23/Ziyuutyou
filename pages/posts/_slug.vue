@@ -1,6 +1,6 @@
 <template>
   <!-- ToolbarにかぶせるためにMarginを上に引っ張る？ -->
-  <v-card elevation="10" class="pa-5" style="margin-top: -64px;">
+  <v-sheet elevation="10" class="pa-5" style="margin-top: -64px;">
     <div class="post-meta pa-2">
       <v-icon>mdi-file-upload-outline</v-icon>
       <time>{{ (new Date(this.created_at)).toLocaleDateString() }} 投稿</time>
@@ -30,7 +30,7 @@
         </v-menu>
       </v-row>
     </v-card-actions>
-  </v-card>
+  </v-sheet>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- ToolbarにかぶせるためにMarginを上に引っ張る？ -->
-    <v-card elevation="10" class="pa-5" style="margin-top: -64px;">
+    <v-sheet elevation="10" class="pa-5" style="margin-top: -64px;">
       <!-- 本文 bodyHtml === this.bodyHtml だと -->
       <div id="content" v-html="bodyHtml"></div>
       <v-divider></v-divider>
@@ -10,7 +10,7 @@
         <v-icon>mdi-file-upload-outline</v-icon>
         <time>{{ (new Date(this.created_at)).toLocaleDateString() }} 投稿</time>
       </div>
-    </v-card>
+    </v-sheet>
   </v-app>
 </template>
 <script>

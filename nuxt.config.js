@@ -62,7 +62,7 @@ const generateRoutes = callback => {
 }
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -160,7 +160,7 @@ export default {
     title: 'たくさんの自由帳',
     'og:title': 'たくさんの自由帳',
     lang: 'ja',
-    theme_color: '#8c9eff',
+    theme_color: '#5870cb',
     background_color: '#5870cb',
     display: 'standalone',
   },
