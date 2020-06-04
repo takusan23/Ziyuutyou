@@ -16,7 +16,7 @@ const pagesJSON = require('./contents/pages/summary.json');
  *  */
 const sourceFileNameToUrl = (filepath, folderName) => {
   const name = filepath.replace(`contents/${folderName}/markdown/`, '').replace('.md', '')
-  return `/${folderName}/${name}`
+  return `/${folderName}/${name}/`
 }
 
 /** タグが含まれている記事一覧のパス配列生成関数。 */
@@ -28,7 +28,7 @@ const generateTagPageRoutesList = () => {
   // 被りを消す。new Set()でいいらしい
   const tagList = [...new Set(allTagItems)]
   // パス生成。こんな感じの→ /posts/tag/自作ブログ みたいな感じに
-  const pathList = tagList.map(tagName => `/posts/tag/${tagName}`)
+  const pathList = tagList.map(tagName => `/posts/tag/${tagName}/`)
   return pathList
 }
 
@@ -41,7 +41,7 @@ const generatePagenationRoutesList = () => {
   // console.log(`ページ数：${calc} / 記事数：${postsJSON.sourceFileArray.length}`)
   // ページ生成。1ページ目から作るので1からスタート
   for (let i = 1; i <= calc; i++) {
-    dynamicRouterPathList.push(`/posts/page/${i}`)
+    dynamicRouterPathList.push(`/posts/page/${i}/`)
   }
   return dynamicRouterPathList
 }
@@ -168,6 +168,7 @@ export default {
    * GitHub Pagesに対応させる
    */
   router: {
-    base: '/Ziyuutyou/'
+    base: '/Ziyuutyou/',
+    trailingSlash: true
   }
 }

@@ -9,8 +9,8 @@
     <v-card-actions>
       <v-spacer />
       <v-btn color="secondary" href="https://takusan23.github.io/Bibouroku/" target="_blank">前のブログ</v-btn>
-      <v-btn color="primary" nuxt to="/pages/about">進捗</v-btn>
-      <v-btn color="primary" nuxt to="/posts/page/1">記事一覧</v-btn>
+      <v-btn color="primary" nuxt to="/pages/about/">進捗</v-btn>
+      <v-btn color="primary" nuxt to="/posts/page/1/">記事一覧</v-btn>
     </v-card-actions>
   </v-card>
 </template>

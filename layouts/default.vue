@@ -71,12 +71,12 @@ export default {
         {
           icon: "mdi-format-list-checkbox",
           title: "記事一覧",
-          to: "/posts/page/1"
+          to: "/posts/page/1/"
         },
         {
           icon: "mdi-chart-bubble",
           title: "About",
-          to: "/pages/about"
+          to: "/pages/about/"
         }
       ],
       miniVariant: false,

@@ -3,21 +3,25 @@
 
 <template>
   <div>
-    <v-card
-      class="ma-2 pa-5"
-      v-for="item in blogItems"
-      :key="item.title"
-      :to="`../${item.fileName}`"
-    >
-      <div class="headline mb-1 titleHover">{{item.title}}</div>
-      <v-divider></v-divider>
-      <div class="post-meta pa-2">
-        <v-icon>mdi-file-upload-outline</v-icon>
-        <time>{{ (new Date(item.created_at)).toLocaleDateString() }} 投稿</time>
-      </div>
-      <!-- タグ -->
-      <TagGroup :tags="item.tags"></TagGroup>
-    </v-card>
+    <!-- サーバーとクライアントのDOMが違うって怒られるのでなんか黙らせる（ライブラリが悪くね？） -->
+    <no-ssr>
+      <!-- 最後のスラッシュを付ける設定なので :to が長い -->
+      <v-card
+        class="ma-2 pa-5"
+        v-for="item in blogItems"
+        :key="item.title"
+        :to="`../../${item.fileName}/`"
+      >
+        <div class="headline mb-1 titleHover">{{item.title}}</div>
+        <v-divider></v-divider>
+        <div class="post-meta pa-2">
+          <v-icon>mdi-file-upload-outline</v-icon>
+          <time>{{ (new Date(item.created_at)).toLocaleDateString() }} 投稿</time>
+        </div>
+        <!-- タグ -->
+        <TagGroup :tags="item.tags"></TagGroup>
+      </v-card>
+    </no-ssr>
   </div>
 </template>
 

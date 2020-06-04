@@ -1,7 +1,7 @@
 // タグのChipまとめたやつ
 
 <template>
-  <div>
+  <tbody>
     <v-chip
       class="ma-1 pa-4"
       color="indigo"
@@ -15,7 +15,7 @@
       </v-avatar>
       {{tag}}
     </v-chip>
-  </div>
+  </tbody>
 </template>
 
 <script>
