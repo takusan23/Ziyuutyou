@@ -4,7 +4,7 @@
 <template>
   <div>
     <!-- サーバーとクライアントのDOMが違うって怒られるのでなんか黙らせる（ライブラリが悪くね？） -->
-    <no-ssr>
+    <client-only>
       <!-- 最後のスラッシュを付ける設定なので :to が長い -->
       <v-card
         class="ma-2 pa-5"
@@ -21,7 +21,7 @@
         <!-- タグ -->
         <TagGroup :tags="item.tags"></TagGroup>
       </v-card>
-    </no-ssr>
+    </client-only>
   </div>
 </template>
 
