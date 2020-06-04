@@ -8,7 +8,7 @@
       text-color="white"
       v-for="tag in tags"
       :key="tag"
-      :to="`../../posts/tag/${tag}`"
+      :to="`../../../posts/tag/${tag}/`"
     >
       <v-avatar left>
         <v-icon>mdi-tag-text-outline</v-icon>

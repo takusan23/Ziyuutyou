@@ -1,9 +1,9 @@
 # ziyuutyou
 
-![image](https://user-images.githubusercontent.com/32033405/83629172-99310d80-a5d4-11ea-95fc-e3db29f53756.png)
+![image](https://user-images.githubusercontent.com/32033405/83749090-20968380-a69e-11ea-849e-834fa30597ba.png)
 
 
-自由帳。  
+自由帳。🚧作成途中🚧  
 Nuxt.jsでブログ自作できるらしいので作ってみた。  
 [備忘録](https://takusan23.github.io/Bibouroku/)の代替に・・・なるかな？
 
