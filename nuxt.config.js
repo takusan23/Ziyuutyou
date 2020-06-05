@@ -170,5 +170,8 @@ export default {
   router: {
     base: '/Ziyuutyou/',
     trailingSlash: true
+  },
+  server: {
+    host: '0.0.0.0' // デフォルト: localhost
   }
 }

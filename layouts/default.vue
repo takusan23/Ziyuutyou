@@ -92,12 +92,20 @@ export default {
   mounted() {
     // 端末がダークモードになっているか
     // https://stackoverflow.com/questions/56393880/how-do-i-detect-dark-mode-using-javascript
+
+    // 起動時判断
+    // Vuetify切り替える
+    this.$vuetify.theme.dark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    // リアルタイム監視。Androidだと動かなかった
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", e => {
         const isDeviceDarkModeEnabled = e.matches;
         // Vuetify切り替える
-        this.$vuetify.theme.dark = isDeviceDarkModeEnabled
+        this.$vuetify.theme.dark = isDeviceDarkModeEnabled;
       });
   }
 };
