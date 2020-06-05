@@ -153,6 +153,9 @@ export.default {
 }
 ```
 
+### `sw.js`がよくわからんけどバージョン管理対象外になってて**ホーム画面に追加**が消えてた
+
+GitHubのリポジトリ開いて`/docs`開いたら見事にServiceWorkerだけ抜けてました。なんで？
 
 ## 特に大変じゃなかったこと
 
@@ -202,6 +205,25 @@ $vuetify.theme.dark = true
 三項演算子使うの初めてかもしれない（まずKotlinにはないし）  
 
 ところで$←これなに？
+
+### 端末がダークモードかどうか
+
+以下のJSでダークモードかどうかを監視して、Vuetifyのモードを変更するようにできます。  
+[参考：StackOverflow](https://stackoverflow.com/questions/56393880/how-do-i-detect-dark-mode-using-javascript)
+
+```js
+window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", e => {
+        const isDeviceDarkModeEnabled = e.matches;
+        // Vuetify切り替える
+        this.$vuetify.theme.dark = isDeviceDarkModeEnabled
+      });
+```
+
+**StackOverflow**先生の回答では`e.matches`に`darkかlight`が入ってるっぽいんですが、私のChromeくんでは`trueかfalse`でした。先生の回答ちょっと古かったのかな。
+
+~~まあダークモードなんてあんま使わないんですけどね（は？）~~
 
 ## おわりに
 学校始まるわ。早起きつっら  

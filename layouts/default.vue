@@ -85,6 +85,20 @@ export default {
       title: "Vuetify.js",
       drawerTitle: "たくさんの自由帳"
     };
+  },
+  created() {
+    //
+  },
+  mounted() {
+    // 端末がダークモードになっているか
+    // https://stackoverflow.com/questions/56393880/how-do-i-detect-dark-mode-using-javascript
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", e => {
+        const isDeviceDarkModeEnabled = e.matches;
+        // Vuetify切り替える
+        this.$vuetify.theme.dark = isDeviceDarkModeEnabled
+      });
   }
 };
 </script>
