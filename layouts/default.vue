@@ -39,9 +39,10 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <!-- AppBar -->
     <v-app-bar :clipped-left="clipped" color="secondary" extended>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title id="title" v-text="this.$route.meta.title" />
+      <v-toolbar-title v-show="!drawer" id="title" v-text="this.$route.meta.title" />
       <v-spacer />
     </v-app-bar>
     <v-content>
