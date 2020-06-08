@@ -115,15 +115,19 @@ namespace DotNetCoreWPF
 
 ## ソリューションエクスプローラー開いて
 名前のところを押して**発行**を押します。
+
 ![Imgur](https://imgur.com/xjXxEdu.png)
 
 **フォルダー**を選んで次へ
+
 ![Imgur](https://imgur.com/WBZdhUB.png)
 
 そのまま**完了**押して良いと思います。
+
 ![Imgur](https://imgur.com/gZPdL5D.png)
 
 そしたら後ろのVS 2019の内容が画像のように変わるので、**構成**のところの鉛筆マークを押します。
+
 ![Imgur](https://imgur.com/dGv9U3Z.png)
 
 そしてこの先は作りたいexeファイルによって操作が変わります。
