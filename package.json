@@ -12,9 +12,9 @@
     "markdown": "npm run post && npm run page",
     "page": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json --markdownOptions.linkify",
     "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify",
-    "pagewatch": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json --markdownOptions.linkify --watch",
-    "postwatch": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify --watch",
-    "all": "npm-run-all markdown dev --parallel postwatch"
+    "pagewatch": "processmd contents/pages/**/*.md --outputDir contents/pages/json --markdownOptions.linkify --watch",
+    "postwatch": "processmd contents/posts/**/*.md --outputDir contents/posts/json --markdownOptions.linkify --watch",
+    "all": "npm-run-all markdown --parallel dev postwatch"
   },
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.3.0",

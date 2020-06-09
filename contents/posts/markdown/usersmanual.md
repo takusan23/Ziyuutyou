@@ -68,13 +68,12 @@ npm run dev
     - GitHub以外で見ること有る？
 - tsconfig.json
     - ？
-
 # contentsフォルダについて / 記事の書き方
 ## 共通
 記事を書いたら以下のコマンドを入れてね。（JSONファイルを更新するため）  
 ↓ブログ(posts)書いたとき
 ```console
-npm run md
+npm run post
 ```
 ↓固定ページ(markdown)書いたとき
 ```console
@@ -95,6 +94,14 @@ Nuxt Routerでは`posts/{ファイル名}`を指定する。
 
 なおどちらも`contents/*/markdown`に入れてね。（他にもjsonとかsummary.jsonとか有るけど気にするな。）  
 そうしないとJSON生成（ブログ一覧生成など）でコケる気がします。
+
+## scripts
+起動：`npm run dev`  
+起動＋Markdownファイル監視（推奨）：`npm run all`  
+MarkdownファイルをJSON化：`npm run markdown`  
+/contents/pageだけJSON化：`npm run page`  
+/contents/postだけJSON化：`npm run post`  
+静的サイト書き出し：`npm run generate`
 
 ## markdownひながた
 ↓これをmarkdownの先頭に書いてください。  

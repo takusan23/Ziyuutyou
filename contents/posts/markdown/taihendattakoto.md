@@ -10,6 +10,8 @@ Hexoってすごいんだなって。
 なお完成はいつになるかわかりません。いつ出来上がるんだこれ？  
 完成までに思ったことを書いていくと思う。
 
+あとドメインが欲しい。買ったこと無いけどどうなんですかね？
+
 ## これ作るのに大変だったこと
 書く。
 
@@ -156,6 +158,56 @@ export.default {
 ### `sw.js`がよくわからんけどバージョン管理対象外になってて**ホーム画面に追加**が消えてた
 
 GitHubのリポジトリ開いて`/docs`開いたら見事にServiceWorkerだけ抜けてました。なんで？
+
+### Hexoと違ってリアルタイムで記事の内容が反映されない
+
+Hexoって書いてる途中でも、リロードすれば記事の内容が更新されてどんな感じに見れてるか確認できるんですけど、processmdくんデフォルトだとできないっぽい？  
+`processmd`見る感じ、ファイルの中身を監視する`--watch`オプションが存在するのでそれ使えばよさそうです、  
+それで適当に`package.json`の`scripts`の中に実行とprocessmdの監視オプション付きを同時に実行する様に書いたんですけど、  
+**nuxt起動から先に進みません！そりゃnuxtもファイルを監視してるからそこで止まりますよね。**
+
+それでどうすれば同時に（並列に）起動できるかって話ですが、`npm-run-all`ってのを使えば並列実行ができそうです。  
+ただ、これ使っても更新できるのは記事の中身だけで記事一覧(summary.json)は更新できないっぽいです。(nuxt起動時にsummary.jsonが空っぽだぞって怒られる。どうやら一度消えるらしい？)  
+
+でも記事の中身がリアルタイムで反映されるようになったので満足です。VSCode半分にしなくて済むし。  
+参考程度の`package.json`のscript
+
+```json
+"scripts": {
+  "dev": "nuxt --port 11451",
+  "build": "nuxt build",
+  "start": "nuxt start",
+  "generate": "nuxt generate",
+  "markdown": "npm run post && npm run page",
+  "page": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json --markdownOptions.linkify",
+  "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify",
+  "pagewatch": "processmd contents/pages/**/*.md --outputDir contents/pages/json --markdownOptions.linkify --watch",
+  "postwatch": "processmd contents/posts/**/*.md --outputDir contents/posts/json --markdownOptions.linkify --watch",
+  "all": "npm-run-all markdown --parallel dev postwatch"
+},
+```
+
+`npm run all`を実行すると
+- markdownファイルがJSON形式に変換される
+- nuxt起動
+- nuxt起動と同時にprocessmdの監視を始める
+  - `--stdout`オプションは外してあるので、記事一覧は更新されない。
+
+`--parallel`のあとに指定したスクリプトが並列で実行され、その前に書いてあるスクリプトは直列で実行されます。
+
+ちなみにprocessmdくんがJSONファイルを書き換えるとnuxtのファイル変更監視に引っかかるので自動で更新されるようになります。すげえ
+
+~~たまにundefinedになるけどしゃーない~~
+
+### マークダウンに書いたURLがリンクにならない
+
+processmdくんのオプションに`--markdownOptions.linkify`をくっつけて実行すればいいです。
+
+```js
+"scripts": {
+  "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify"
+}
+```
 
 ## 特に大変じゃなかったこと
 
