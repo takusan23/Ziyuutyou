@@ -2,7 +2,7 @@
 title: マウスカーソルの速度変えるアプリ作った
 created_at: 2020/06/08
 tags:
-- C#
+- CS
 - WPF
 - .NETCore
 ---

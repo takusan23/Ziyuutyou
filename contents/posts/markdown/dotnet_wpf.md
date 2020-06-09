@@ -2,7 +2,7 @@
 title: .NET CoreでWPFアプリ作るぞ
 created_at: 2020/06/09
 tags:
-- C#
+- CS
 - WPF
 - .NETCore
 ---

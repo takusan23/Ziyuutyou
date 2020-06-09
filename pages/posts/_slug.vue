@@ -15,19 +15,7 @@
     <!-- 共有 -->
     <v-card-actions>
       <v-row align="center" justify="end">
-        <!-- Mastodon Share -->
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn text color="blue" dark v-on="on">
-              <v-icon>mdi-mastodon</v-icon>Mastodonで共有？
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item v-for="name in instans" :key="name">
-              <v-list-item-title v-on:click="shareDon(name)" style="cursor: pointer;">{{ name }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
+        <MastodonShare></MastodonShare>
       </v-row>
     </v-card-actions>
   </v-sheet>
@@ -36,6 +24,7 @@
 <script>
 import { sourceFileArray } from "../../contents/posts/summary.json";
 import TagGroup from "../../components/TagGroup.vue";
+import MastodonShare from "../../components/MastodonShare.vue";
 
 export default {
   // 記事があるかどうか。JSONのsourceFileArrayの配列に含まれているか確認している。
@@ -88,7 +77,8 @@ export default {
     }
   },
   components: {
-    TagGroup
+    TagGroup,
+    MastodonShare
   }
 };
 </script>
