@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "markdown": "npm run md && npm run page",
     "page": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json",
-    "md": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json"
+    "md": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify"
   },
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.3.0",

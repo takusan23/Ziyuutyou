@@ -69,3 +69,8 @@ table td {
     border-radius: 10px;
     box-shadow: inset 0 0 0 2px #fff;
 }
+
+/* 画像が大きすぎるので調整 */
+img{
+    max-width: 80%;
+}
