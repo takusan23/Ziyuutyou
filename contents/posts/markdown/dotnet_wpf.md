@@ -11,7 +11,7 @@ tags:
 
 # ほんだい
 WPFなんてめったに触らんから未来の私がWPFやる時に見に来る記事。  
-[WPFアプリ作ったので](https://takusan23.github.io/Ziyuutyou/posts/mousecursor_wpf/)その時に躓いたことも一緒にかく
+[WPFアプリ作ったので](https://takusan23.github.io/Ziyuutyou/posts/mousecursor_wpf/)その時に躓いたこ
 
 # 環境
 |なまえ|あたい|
@@ -33,6 +33,8 @@ WPFなんてめったに触らんから未来の私がWPFやる時に見に来�
 検索ボックスに`wpf`って入れれば出ます。  
 `.NET Framework`じゃないほうを選びましょうね。
 ![Imgur](https://imgur.com/BHxIloY.png)
+
+
 その後の`プロジェクト名`とかは各自決めてね。
 
 # ぷよぐらみんぐ
@@ -166,7 +168,7 @@ namespace DotNetCoreWPF
 
 というかなんで`TextBox`使ったの？`TextBlock`で良かったじゃん。
 
-一応ソースコード置いときますね→https://github.com/takusan23/DotNetCoreWPF
+一応ソースコード置いときますね→ https://github.com/takusan23/DotNetCoreWPF
 
 あと少しずれるんだけど、画像を入れても何故かコケる問題。画像を右クリックしてプロパティ選んで、ビルドアクションをリソースにすればいいのね。時間奪われた。
 

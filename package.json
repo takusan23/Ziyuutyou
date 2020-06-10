@@ -18,8 +18,10 @@
   },
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.3.0",
+    "@nuxtjs/markdownit": "^1.2.9",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "highlight.js": "^10.0.3",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-highlight": "^0.2.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {

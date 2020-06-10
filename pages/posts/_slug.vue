@@ -9,7 +9,7 @@
     <!-- 区切り線 -->
     <v-divider></v-divider>
     <!-- 本文 bodyHtml === this.bodyHtml だと -->
-    <div id="content" v-html="bodyHtml"></div>
+    <div id="content" v-html="$md.render(bodyContent)"></div>
     <div id="count"></div>
     <v-divider></v-divider>
     <!-- 共有 -->

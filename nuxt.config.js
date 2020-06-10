@@ -107,6 +107,7 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
+    '@nuxtjs/markdownit'
   ],
   /*
   ** vuetify module configuration
@@ -173,5 +174,18 @@ export default {
   },
   server: {
     host: '0.0.0.0' // デフォルト: localhost
+  },
+  /**
+   * マークダウンの設定？
+   */
+  markdownit: {
+    injected: true, // $md 使えるように
+    html: true, // HTMLタグを有効にする
+    linkify: true, // URLを見つけてリンクに,
+    typography: true, // ？
+    use: [
+      'markdown-it-footnote', // [^1]←注釈使えるように
+      'markdown-it-highlight',
+    ]
   }
 }

@@ -173,18 +173,20 @@ Hexoって書いてる途中でも、リロードすれば記事の内容が更�
 参考程度の`package.json`のscript
 
 ```json
-"scripts": {
-  "dev": "nuxt --port 11451",
-  "build": "nuxt build",
-  "start": "nuxt start",
-  "generate": "nuxt generate",
-  "markdown": "npm run post && npm run page",
-  "page": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json --markdownOptions.linkify",
-  "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify",
-  "pagewatch": "processmd contents/pages/**/*.md --outputDir contents/pages/json --markdownOptions.linkify --watch",
-  "postwatch": "processmd contents/posts/**/*.md --outputDir contents/posts/json --markdownOptions.linkify --watch",
-  "all": "npm-run-all markdown --parallel dev postwatch"
-},
+{
+  "scripts": {
+    "dev": "nuxt --port 11451",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "markdown": "npm run post && npm run page",
+    "page": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json --markdownOptions.linkify",
+    "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify",
+    "pagewatch": "processmd contents/pages/**/*.md --outputDir contents/pages/json --markdownOptions.linkify --watch",
+    "postwatch": "processmd contents/posts/**/*.md --outputDir contents/posts/json --markdownOptions.linkify --watch",
+    "all": "npm-run-all markdown --parallel dev postwatch"
+  },
+}
 ```
 
 `npm run all`を実行すると
@@ -203,9 +205,11 @@ Hexoって書いてる途中でも、リロードすれば記事の内容が更�
 
 processmdくんのオプションに`--markdownOptions.linkify`をくっつけて実行すればいいです。
 
-```js
-"scripts": {
-  "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify"
+```json
+{
+  "scripts": {
+    "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify"
+  }
 }
 ```
 
