@@ -1,17 +1,32 @@
 {
   "fileMap": {
-    "contents/posts/json/dotnet_wpf.json": {
-      "title": ".NET CoreでWPFアプリ作るぞ",
-      "created_at": "2020/06/09",
+    "contents/posts/json/android11_devicecontrol.json": {
+      "title": "Android 11 のデバイスコントロールAPIを試す",
+      "created_at": "2020-06-11T00:00:00.000Z",
       "tags": [
-        "CS",
-        "WPF",
-        ".NETCore"
+        "Android",
+        "Kotlin",
+        "Android R"
       ],
       "dir": "contents/posts/json",
-      "base": "dotnet_wpf.json",
+      "base": "android11_devicecontrol.json",
       "ext": ".json",
-      "sourceBase": "dotnet_wpf.md",
+      "sourceBase": "android11_devicecontrol.md",
+      "sourceExt": ".md"
+    },
+    "contents/posts/json/taglist.json": {
+      "title": "タグのページ作った",
+      "created_at": "2020-06-03T00:00:00.000Z",
+      "tags": [
+        "その他",
+        "Nuxt.js",
+        "自作ブログ",
+        "JavaScript"
+      ],
+      "dir": "contents/posts/json",
+      "base": "taglist.json",
+      "ext": ".json",
+      "sourceBase": "taglist.md",
       "sourceExt": ".md"
     },
     "contents/posts/json/mousecursor_wpf.json": {
@@ -28,32 +43,18 @@
       "sourceBase": "mousecursor_wpf.md",
       "sourceExt": ".md"
     },
-    "contents/posts/json/taihendattakoto.json": {
-      "title": "これ作るのに大変だったこと",
-      "created_at": "2020-06-02T00:00:00.000Z",
+    "contents/posts/json/dotnet_wpf.json": {
+      "title": ".NET CoreでWPFアプリ作るぞ",
+      "created_at": "2020/06/09",
       "tags": [
-        "その他",
-        "自作ブログ"
+        "CS",
+        "WPF",
+        ".NETCore"
       ],
       "dir": "contents/posts/json",
-      "base": "taihendattakoto.json",
+      "base": "dotnet_wpf.json",
       "ext": ".json",
-      "sourceBase": "taihendattakoto.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/taglist.json": {
-      "title": "タグのページ作った",
-      "created_at": "2020-06-03T00:00:00.000Z",
-      "tags": [
-        "その他",
-        "Nuxt.js",
-        "自作ブログ",
-        "JavaScript"
-      ],
-      "dir": "contents/posts/json",
-      "base": "taglist.json",
-      "ext": ".json",
-      "sourceBase": "taglist.md",
+      "sourceBase": "dotnet_wpf.md",
       "sourceExt": ".md"
     },
     "contents/posts/json/first.json": {
@@ -86,9 +87,23 @@
       "ext": ".json",
       "sourceBase": "usersmanual.md",
       "sourceExt": ".md"
+    },
+    "contents/posts/json/taihendattakoto.json": {
+      "title": "これ作るのに大変だったこと",
+      "created_at": "2020-06-02T00:00:00.000Z",
+      "tags": [
+        "その他",
+        "自作ブログ"
+      ],
+      "dir": "contents/posts/json",
+      "base": "taihendattakoto.json",
+      "ext": ".json",
+      "sourceBase": "taihendattakoto.md",
+      "sourceExt": ".md"
     }
   },
   "sourceFileArray": [
+    "contents/posts/markdown/android11_devicecontrol.md",
     "contents/posts/markdown/dotnet_wpf.md",
     "contents/posts/markdown/first.md",
     "contents/posts/markdown/mousecursor_wpf.md",
