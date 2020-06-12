@@ -169,7 +169,6 @@ export default {
    * GitHub Pagesに対応させる
    */
   router: {
-    base: '/Ziyuutyou/',
     trailingSlash: true
   },
   server: {
