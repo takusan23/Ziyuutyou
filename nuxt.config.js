@@ -22,7 +22,6 @@ const sourceFileNameToUrl = (filepath, folderName) => {
 /** タグが含まれている記事一覧のパス配列生成関数。 */
 const generateTagPageRoutesList = () => {
   // 記事オブジェクト一覧配列を生成する。キーだけの配列にしてmapで取り出す
-  console.log(postsJSON)
   const blogItems = Object.keys(postsJSON.fileMap).map(key => postsJSON.fileMap[key])
   // タグだけの配列を作る
   const allTagItems = blogItems.map(blog => blog.tags).flat()
