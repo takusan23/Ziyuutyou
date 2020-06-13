@@ -10,6 +10,12 @@ tags:
 Android 11 Beta きたぞおおおおおおおおお   
 🥳←これすき
 
+# 追記：2020/06/13
+Google Payが使えないと言いました。が、Suicaで電車に乗れたので多分**おｻｲﾌｹｰﾀｲ**アプリでは対応していない**NFC Pay**あたりが使えないんだと思います。  
+Felica使う系は多分行けるんじゃないですかね？
+
+あとスライダー(RangeTemplate)動いたのでそれも
+
 # 本題
 Android 11 Beta 1 来ました。  
 わたし的に楽しみにしてる機能は
@@ -247,7 +253,53 @@ override fun performControlAction(p0: String, p1: ControlAction, p2: Consumer<In
 # おわりに
 ソースコードです。https://github.com/takusan23/DeviceControlsTest
 
-それと**本当**はスライダー（値を調整できる`RangeTemplate`てやつ）コントローラーがあったんですけど、私の環境ではうまく動きませんでした。Beta版だからなのかそもそも私が間違ってるのか？
+~~それと**本当**はスライダー（値を調整できる`RangeTemplate`てやつ）コントローラーがあったんですけど、私の環境ではうまく動きませんでした。Beta版だからなのかそもそも私が間違ってるのか？~~
+
+**RangeTemplate**動きました。[参考にしました](https://gist.github.com/KieronQuinn/c9950f3ee09e11f305ce16e7f48f03b8)
+
+```kotlin
+val sliderControl = Control.StatefulBuilder(SLIDER_BUTTON_ID, pendingIntent)
+    .setTitle("スライダーサンプル") // たいとる
+    .setSubtitle("スライダーです。") // サブタイトル
+    .setDeviceType(DeviceTypes.TYPE_LIGHT) // 多分アイコンに使われてる？
+    .setControlId(SLIDER_BUTTON_ID)
+    .setStatus(Control.STATUS_OK) // 現在の状態
+sliderControl.setControlTemplate(
+    ToggleRangeTemplate(
+        "slider_template",
+        ControlButton(true, "slider_button"),
+        RangeTemplate("range", 0f, 10f, 1f, 1f, null)
+    )
+)
+updatePublisher.onNext(sliderControl.build())
+```
+
+performControlAction()はこうです。
+
+```kotlin
+// スライダー
+// RangeTemplate は FloatAction
+if (p1 is FloatAction) {
+    // 現在の値
+    val currentValue = p1.newValue
+    val sliderControl = Control.StatefulBuilder(SLIDER_BUTTON_ID, pendingIntent)
+        .setTitle("スライダーサンプル") // たいとる
+        .setSubtitle("スライダーです。") // サブタイトル
+        .setDeviceType(DeviceTypes.TYPE_LIGHT) // 多分アイコンに使われてる？
+        .setControlId(SLIDER_BUTTON_ID)
+        .setStatus(Control.STATUS_OK) // 現在の状態
+    val controlButton = ControlButton(true, "slider_button")
+    sliderControl.setControlTemplate(
+        ToggleRangeTemplate(
+            "slider_template",
+            controlButton,
+            RangeTemplate("range", 0f, 10f, currentValue, 1f, null)
+        )
+    )
+    updatePublisher.onNext(sliderControl.build())
+}
+```
+
 
 あと`DeviceType`がいっぱいあるので全種類アイコンと色を見てみたい。やってみるか。
 

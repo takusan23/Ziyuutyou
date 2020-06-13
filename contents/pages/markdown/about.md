@@ -40,3 +40,6 @@ Cookieを無効化することでGoogle Analyticsの収集を拒否すること�
     - MIT License
 - Koruri Regular
     - このブログのフォント。かわいい
+- Markdown-it
+    - processmdがHTMLを出してくれるんだけどカスタマイズできるらしい？
+    - `markdown-it-footnote`入れたので注釈が使えるようになった。

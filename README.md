@@ -1,13 +1,18 @@
 # ziyuutyou
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cc14df48-3e5f-4582-a498-503503d319f3/deploy-status)](https://app.netlify.com/sites/takusan23-ziyuutyou/deploys)
+
 ![image](https://user-images.githubusercontent.com/32033405/83749090-20968380-a69e-11ea-849e-834fa30597ba.png)
 
+https://takusan23-ziyuutyou.netlify.app/
 
 自由帳。🚧作成途中🚧  
 Nuxt.jsでブログ自作できるらしいので作ってみた。  
 [備忘録](https://takusan23.github.io/Bibouroku/)の代替に・・・なるかな？
 
-JavaScriptむずくない？
+JavaScriptむずくない？  
+
+あとしれっとnetlifyにお引越ししました。どうだろ？
 
 ## 起動方法
 初回時は以下の1行を入れてね

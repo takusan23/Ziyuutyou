@@ -213,6 +213,27 @@ processmdくんのオプションに`--markdownOptions.linkify`をくっつけ�
 }
 ```
 
+### ~~しれっと~~Netlifyにお引越ししたりした。
+
+GitHubPagesより良いのかはしらんけどお試しで引っ越してみた。これ勝手にメアド公開したりしないよな？  
+[Netlify へデプロイするには？](https://ja.nuxtjs.org/faq/netlify-deployment/)ってのが有るのでそれに沿ってやればできると思います。
+
+じゃあなんで**大変だったこと**に書いてんだよって話ですが、っぱコケるんですね。
+
+<iframe src="https://best-friends.chat/@takusan_23/104330325427830329/embed" class="mastodon-embed" style="max-width: 100%; border: 0; height:200px" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://best-friends.chat/embed.js" async="async"></script>
+
+あーJSだからしゃーないのかなーなんて思ってとりあえず検索すると、`Chromeのバージョン的に対応していない`とか出てきたのでワンちゃんNode.jsくんのバージョンがおかしいのではないかと考えました。  
+
+NetlifyにNode.jsのバージョンを指定する方法ですが、検索したらありました。 [参考元](https://qiita.com/n0bisuke/items/8bddad87610b01c90003)
+
+`.nvmrc`というファイルを置いて、中にNode.jsのバージョンを書くだけで解決しました。
+
+`v12.14.1`
+
+これだけ。これで成功しました。
+
+ちなみサイト作成時のステップ３で、ビルドコマンドに`npm run generate`、ディレクトリを`docs(GitHubPagesの名残)`すれば、コミット+プッシュ時に勝手に`npm run genreate`して公開してくれます。らく
+
 ## 特に大変じゃなかったこと
 
 ### PWA
