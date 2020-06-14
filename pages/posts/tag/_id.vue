@@ -35,6 +35,12 @@ export default {
     });
     // 記事入れる
     this.blogItems = hasKeyList.map(key => fileMap[key]);
+    // ファイル名入れる
+    this.blogItems.forEach(blog => {
+      // 名前
+      const name = blog.sourceBase.replace(".md", "");
+      blog.fileName = name;
+    });
   },
   // タイトル変更など
   head() {

@@ -61,7 +61,6 @@ table td {
 
 ::-webkit-scrollbar-track {
     background: #fff;
-    border-left: solid 1px #ececec;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -71,6 +70,7 @@ table td {
 }
 
 /* 画像が大きすぎるので調整 */
-img{
+
+img {
     max-width: 80%;
 }

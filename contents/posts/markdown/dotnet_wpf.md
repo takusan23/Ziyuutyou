@@ -11,7 +11,7 @@ tags:
 
 # ほんだい
 WPFなんてめったに触らんから未来の私がWPFやる時に見に来る記事。  
-[WPFアプリ作ったので](https://takusan23.github.io/Ziyuutyou/posts/mousecursor_wpf/)その時に躓いたこ
+[WPFアプリ作ったので](../../posts/mousecursor_wpf/)その時に躓いたこ
 
 # 環境
 |なまえ|あたい|
