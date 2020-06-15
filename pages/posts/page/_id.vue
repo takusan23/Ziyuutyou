@@ -28,13 +28,19 @@
 </template>
 
 <script>
-import { sourceFileArray, fileMap } from "../../../contents/posts/summary.json";
+// import { sourceFileArray, fileMap } from "../../../contents/posts/summary.json";
 import BlogItemCard from "../../../components/BlogItemCard.vue";
 
 // 一度に表示する記事の数
 const PAGE_LIMIT = 10;
 
 export default {
+  // 記事一覧のJSON
+  asyncData({ params }) {
+    return Object.assign({}, require("../../../contents/posts/summary.json"), {
+      params
+    });
+  },
   data: () => {
     return {
       blogItems: [],
@@ -50,10 +56,10 @@ export default {
     const pageId = parseInt(this.$route.params.id);
     this.currentPage = pageId;
     // なんかしらんけど並び順が新しい順とは限らないらしい？
-    const sortedKeyList = Object.keys(fileMap);
-    sortedKeyList.sort(function(a, b) {
-      const aDate = new Date(fileMap[a].created_at).getTime();
-      const bDate = new Date(fileMap[b].created_at).getTime();
+    const sortedKeyList = Object.keys(this.fileMap);
+    sortedKeyList.sort((a, b) => {
+      const aDate = new Date(this.fileMap[a].created_at).getTime();
+      const bDate = new Date(this.fileMap[b].created_at).getTime();
       if (aDate > bDate) return -1;
       if (aDate < bDate) return 1;
       return 0;
@@ -66,7 +72,7 @@ export default {
     // キーを取り出す
     pageList.forEach(title => {
       // 記事一個ずつ取る
-      const blog = fileMap[title];
+      const blog = this.fileMap[title];
       // 名前
       const name = blog.sourceBase.replace(".md", "");
       blog.fileName = name;
@@ -76,7 +82,7 @@ export default {
     // 表示済みブログ件数。
     const showedBlogCount = pageId * PAGE_LIMIT; // 3ページ目だったら30件表示されてることに
     // 「次のページ」ボタンを付けるかどうか。一覧より記事数のほうが多くて、今表示してる記事が一個以上有るとき表示する。
-    if (pageId * 10 < sourceFileArray.length) {
+    if (pageId * 10 < this.sourceFileArray.length) {
       this.nextTo = `${pageId + 1}`;
       this.nextButtonVisible = true;
     }
