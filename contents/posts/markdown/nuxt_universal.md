@@ -2,7 +2,7 @@
 title: Nuxtの静的サイトジェネレートはモードをuniversalにしよう
 created_at: 2020-06-16
 tags:
-- Nuxt.js
+- NuxtJS
 - JavaScript
 - 自作ブログ
 ---

@@ -5,7 +5,7 @@ tags:
 - とりせつ
 - その他
 - Markdown
-- Nuxt.js
+- NuxtJS
 - 自作ブログ
 - JavaScript
 ---

@@ -159,17 +159,12 @@ export default {
   manifest: {
     name: 'たくさんの自由帳',
     title: 'たくさんの自由帳',
+    short_name: 'たくさんの自由帳',
     'og:title': 'たくさんの自由帳',
     lang: 'ja',
     theme_color: '#5870cb',
     background_color: '#5870cb',
     display: 'standalone',
-  },
-  /**
-   * GitHub Pagesに対応させる
-   */
-  router: {
-    trailingSlash: true
   },
   server: {
     host: '0.0.0.0' // デフォルト: localhost

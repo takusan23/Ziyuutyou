@@ -3,7 +3,7 @@ title: タグのページ作った
 created_at: 2020-06-03
 tags:
 - その他
-- Nuxt.js
+- NuxtJS
 - 自作ブログ
 - JavaScript
 ---

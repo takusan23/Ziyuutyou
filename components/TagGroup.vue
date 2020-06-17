@@ -10,7 +10,7 @@
         class="ma-1 pa-4"
         color="indigo"
         text-color="white"
-        :to="`../../../posts/tag/${tag}/`"
+        :to="`/posts/tag/${tag}`"
       >
         <v-avatar left>
           <v-icon>mdi-tag-text-outline</v-icon>

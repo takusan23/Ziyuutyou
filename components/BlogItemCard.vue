@@ -9,7 +9,7 @@
       class="ma-2 pa-5"
       v-for="item in blogItems"
       :key="item.title"
-      :to="`../../${item.fileName}/`"
+      :to="`/posts/${item.fileName}`"
     >
       <div class="headline mb-1 titleHover">{{item.title}}</div>
       <v-divider></v-divider>
