@@ -3,6 +3,7 @@ title: Android 11 のデバイスコントロールAPIを試す
 created_at: 2020-06-11
 tags:
 - Android
+- Android11
 - Kotlin
 - Android R
 ---
