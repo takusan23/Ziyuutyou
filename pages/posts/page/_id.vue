@@ -10,7 +10,7 @@
         id="next_btn"
         nuxt
         color="primary"
-        :to="backTo"
+        :to="`/posts/page/${backTo}`"
         v-if="backButtonVisible"
         class="ma-2"
       >前のページ</v-btn>
@@ -19,7 +19,7 @@
         id="next_btn"
         nuxt
         color="primary"
-        :to="nextTo"
+        :to="`/posts/page/${nextTo}`"
         v-if="nextButtonVisible"
         class="ma-2"
       >次のページ</v-btn>
