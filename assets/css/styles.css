@@ -9,17 +9,19 @@
 /* VuetifyのせいでCodeタグに勝手にCSS適用されるので強制上書き */
 
 .v-application code {
-    box-shadow: initial !important;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     border-radius: 5px !important;
     font-family: 'Koruri Regular';
-    margin: 5px;
-    padding: 5px;
-    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4) !important;
+    margin: 5px !important;
+    padding: 5px !important;
 }
 
 .v-application code, .v-application kbd {
     font-weight: initial !important;
+}
+
+.hljs {
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* VuetifyはCodeに勝手に色付ける割にはh1とかには付けないらしいので */

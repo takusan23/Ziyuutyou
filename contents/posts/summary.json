@@ -1,16 +1,18 @@
 {
   "fileMap": {
-    "contents/posts/json/domain_katta.json": {
-      "title": "Google Domainsでドメイン買ったからNetlifyで使う",
-      "created_at": "2020-06-15T00:00:00.000Z",
+    "contents/posts/json/android11_coroutine.json": {
+      "title": "Android11からAsyncTask非推奨だしCoroutine使おう",
+      "created_at": "2020-06-19T00:00:00.000Z",
       "tags": [
-        "Netlify",
-        "自作ブログ"
+        "Android",
+        "Android11",
+        "Kotlin",
+        "Coroutine"
       ],
       "dir": "contents/posts/json",
-      "base": "domain_katta.json",
+      "base": "android11_coroutine.json",
       "ext": ".json",
-      "sourceBase": "domain_katta.md",
+      "sourceBase": "android11_coroutine.md",
       "sourceExt": ".md"
     },
     "contents/posts/json/android11_statusbar_hide.json": {
@@ -27,47 +29,45 @@
       "sourceBase": "android11_statusbar_hide.md",
       "sourceExt": ".md"
     },
-    "contents/posts/json/dotnet_wpf.json": {
-      "title": ".NET CoreでWPFアプリ作るぞ",
-      "created_at": "2020/06/09",
+    "contents/posts/json/mousecursor_wpf.json": {
+      "title": "マウスカーソルの速度変えるアプリ作った",
+      "created_at": "2020/06/08",
       "tags": [
         "CS",
         "WPF",
         ".NETCore"
       ],
       "dir": "contents/posts/json",
-      "base": "dotnet_wpf.json",
+      "base": "mousecursor_wpf.json",
       "ext": ".json",
-      "sourceBase": "dotnet_wpf.md",
+      "sourceBase": "mousecursor_wpf.md",
       "sourceExt": ".md"
     },
-    "contents/posts/json/nuxt_universal.json": {
-      "title": "Nuxtの静的サイトジェネレートはモードをuniversalにしよう",
-      "created_at": "2020-06-16T00:00:00.000Z",
+    "contents/posts/json/domain_katta.json": {
+      "title": "Google Domainsでドメイン買ったからNetlifyで使う",
+      "created_at": "2020-06-15T00:00:00.000Z",
       "tags": [
-        "NuxtJS",
-        "JavaScript",
+        "Netlify",
         "自作ブログ"
       ],
       "dir": "contents/posts/json",
-      "base": "nuxt_universal.json",
+      "base": "domain_katta.json",
       "ext": ".json",
-      "sourceBase": "nuxt_universal.md",
+      "sourceBase": "domain_katta.md",
       "sourceExt": ".md"
     },
-    "contents/posts/json/taglist.json": {
-      "title": "タグのページ作った",
-      "created_at": "2020-06-03T00:00:00.000Z",
+    "contents/posts/json/nuxt_2_13_sugoi.json": {
+      "title": "Nuxt.jsのFull Staticがすごい",
+      "created_at": "2020-06-27T00:00:00.000Z",
       "tags": [
-        "その他",
         "NuxtJS",
-        "自作ブログ",
-        "JavaScript"
+        "JavaScript",
+        "Vuetify"
       ],
       "dir": "contents/posts/json",
-      "base": "taglist.json",
+      "base": "nuxt_2_13_sugoi.json",
       "ext": ".json",
-      "sourceBase": "taglist.md",
+      "sourceBase": "nuxt_2_13_sugoi.md",
       "sourceExt": ".md"
     },
     "contents/posts/json/android11_devicecontrol.json": {
@@ -85,6 +85,35 @@
       "sourceBase": "android11_devicecontrol.md",
       "sourceExt": ".md"
     },
+    "contents/posts/json/dotnet_wpf.json": {
+      "title": ".NET CoreでWPFアプリ作るぞ",
+      "created_at": "2020/06/09",
+      "tags": [
+        "CS",
+        "WPF",
+        ".NETCore"
+      ],
+      "dir": "contents/posts/json",
+      "base": "dotnet_wpf.json",
+      "ext": ".json",
+      "sourceBase": "dotnet_wpf.md",
+      "sourceExt": ".md"
+    },
+    "contents/posts/json/taglist.json": {
+      "title": "タグのページ作った",
+      "created_at": "2020-06-03T00:00:00.000Z",
+      "tags": [
+        "その他",
+        "NuxtJS",
+        "自作ブログ",
+        "JavaScript"
+      ],
+      "dir": "contents/posts/json",
+      "base": "taglist.json",
+      "ext": ".json",
+      "sourceBase": "taglist.md",
+      "sourceExt": ".md"
+    },
     "contents/posts/json/usersmanual.json": {
       "title": "自作ブログ(Nuxt.js+processmd)の使い方",
       "created_at": "2020-05-31 21:10:00",
@@ -100,35 +129,6 @@
       "base": "usersmanual.json",
       "ext": ".json",
       "sourceBase": "usersmanual.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/android11_coroutine.json": {
-      "title": "Android11からAsyncTask非推奨だしCoroutine使おう",
-      "created_at": "2020-06-19T00:00:00.000Z",
-      "tags": [
-        "Android",
-        "Android11",
-        "Kotlin",
-        "Coroutine"
-      ],
-      "dir": "contents/posts/json",
-      "base": "android11_coroutine.json",
-      "ext": ".json",
-      "sourceBase": "android11_coroutine.md",
-      "sourceExt": ".md"
-    },
-    "contents/posts/json/mousecursor_wpf.json": {
-      "title": "マウスカーソルの速度変えるアプリ作った",
-      "created_at": "2020/06/08",
-      "tags": [
-        "CS",
-        "WPF",
-        ".NETCore"
-      ],
-      "dir": "contents/posts/json",
-      "base": "mousecursor_wpf.json",
-      "ext": ".json",
-      "sourceBase": "mousecursor_wpf.md",
       "sourceExt": ".md"
     },
     "contents/posts/json/first.json": {
@@ -157,6 +157,20 @@
       "ext": ".json",
       "sourceBase": "taihendattakoto.md",
       "sourceExt": ".md"
+    },
+    "contents/posts/json/nuxt_universal.json": {
+      "title": "Nuxtの静的サイトジェネレートはモードをuniversalにしよう",
+      "created_at": "2020-06-16T00:00:00.000Z",
+      "tags": [
+        "NuxtJS",
+        "JavaScript",
+        "自作ブログ"
+      ],
+      "dir": "contents/posts/json",
+      "base": "nuxt_universal.json",
+      "ext": ".json",
+      "sourceBase": "nuxt_universal.md",
+      "sourceExt": ".md"
     }
   },
   "sourceFileArray": [
@@ -167,6 +181,7 @@
     "contents/posts/markdown/dotnet_wpf.md",
     "contents/posts/markdown/first.md",
     "contents/posts/markdown/mousecursor_wpf.md",
+    "contents/posts/markdown/nuxt_2_13_sugoi.md",
     "contents/posts/markdown/nuxt_universal.md",
     "contents/posts/markdown/taglist.md",
     "contents/posts/markdown/taihendattakoto.md",

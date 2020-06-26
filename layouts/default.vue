@@ -45,11 +45,11 @@
       <v-toolbar-title v-show="!drawer" id="title" v-text="this.$route.meta.title" />
       <v-spacer />
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
     <v-footer :fixed="fixed" app>
       <span>takusan_23 &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>

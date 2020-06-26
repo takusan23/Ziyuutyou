@@ -62,7 +62,9 @@ const generateRoutes = callback => {
 }
 
 export default {
+  // 静的サイト書き出し。universalとstatic入れてね
   mode: 'universal',
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -150,7 +152,7 @@ export default {
    * 書いたMarkdownのファイルをHTMLに書き出す（せいてきサイトジェネレート機能）
    */
   generate: {
-    routes: generateRoutes, // 生成する
+    // routes: generateRoutes, // 生成する
     dir: 'docs'
   },
   /** 

@@ -8,7 +8,8 @@
     "dev": "nuxt --port 11451",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "nuxt build && nuxt export",
+    "staticdev": "nuxt serve",
     "markdown": "npm run post && npm run page",
     "page": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json --markdownOptions.linkify",
     "post": "processmd contents/posts/**/*.md --stdout --outputDir contents/posts/json > contents/posts/summary.json --markdownOptions.linkify",
@@ -22,7 +23,7 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-highlight": "^0.2.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.13.1"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
