@@ -131,6 +131,7 @@ export default {
 
 # おまけ
 ## Vuetifyが変わった？
+
 `v-content`から`v-main`になった模様
 
 あと強制上書きCSSがまた動かなくなってた（力技やめとけ）  

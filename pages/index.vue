@@ -13,6 +13,14 @@ export default {
   components: {
     FirstCard,
     ProfileCard
+  },
+  head() {
+    return {
+      //
+    };
+  },
+  mounted() {
+    document.getElementById("title").innerText = "たくさんの自由帳";
   }
 };
 </script>
