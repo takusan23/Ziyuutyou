@@ -1,0 +1,16 @@
+{
+  "title": "Nuxt.jsのプリフェッチがはやい",
+  "created_at": "2020-06-28T00:00:00.000Z",
+  "tags": [
+    "NuxtJS",
+    "JavaScript",
+    "Vuetify"
+  ],
+  "bodyContent": "まずはこちらのGIFを見てください（3MBぐらい）\r\n\r\n![Imgur](https://i.imgur.com/oyePdWI.gif)\r\n\r\n左側は今まで、右側はNuxt.jsのSmart Prefeching機能を使ったページ遷移です。  \r\n\r\n押した瞬間に切り替わっていることが分かると思います。\r\n\r\n# Smart Prefeching とは\r\n[本家ブログ](https://nuxtjs.org/blog/introducing-smart-prefetching)\r\n\r\nブラウザの表示領域にリンク`<nuxt-link>`を見つけたらそのリンクをブラウザが先読みする機能。これをプリフェッチ機能っていうらしい。\r\n\r\n# 使い方\r\n- `<nuxt-link>`を使う\r\n- Vuetifyの場合\r\n    - `to=\"遷移先\"`と`nuxt`を属性に付けることで利用可能。`nuxt`を付け忘れると機能しない。\r\n    - GIFの用に`<v-card>`をページ遷移に使う際はこんな風に\r\n```html\r\n<v-card\r\n  class=\"ma-2 pa-5\"\r\n  to=\"`/posts/taihendattakoto\"\r\n  nuxt\r\n>\r\n</v-card>\r\n```\r\n\r\n以上です。",
+  "bodyHtml": "<p>まずはこちらのGIFを見てください（3MBぐらい）</p>\n<p><img src=\"https://i.imgur.com/oyePdWI.gif\" alt=\"Imgur\"></p>\n<p>左側は今まで、右側はNuxt.jsのSmart Prefeching機能を使ったページ遷移です。</p>\n<p>押した瞬間に切り替わっていることが分かると思います。</p>\n<h1>Smart Prefeching とは</h1>\n<p><a href=\"https://nuxtjs.org/blog/introducing-smart-prefetching\">本家ブログ</a></p>\n<p>ブラウザの表示領域にリンク<code>&lt;nuxt-link&gt;</code>を見つけたらそのリンクをブラウザが先読みする機能。これをプリフェッチ機能っていうらしい。</p>\n<h1>使い方</h1>\n<ul>\n<li><code>&lt;nuxt-link&gt;</code>を使う</li>\n<li>Vuetifyの場合\n<ul>\n<li><code>to=&quot;遷移先&quot;</code>と<code>nuxt</code>を属性に付けることで利用可能。<code>nuxt</code>を付け忘れると機能しない。</li>\n<li>GIFの用に<code>&lt;v-card&gt;</code>をページ遷移に使う際はこんな風に</li>\n</ul>\n</li>\n</ul>\n<pre><code class=\"hljs\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">v-card</span>\n  <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"ma-2 pa-5\"</span>\n  <span class=\"hljs-attr\">to</span>=<span class=\"hljs-string\">\"`/posts/taihendattakoto\"</span>\n  <span class=\"hljs-attr\">nuxt</span>\n&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">v-card</span>&gt;</span></code></pre><p>以上です。</p>\n",
+  "dir": "contents/posts/json",
+  "base": "nuxt_link_hayai.json",
+  "ext": ".json",
+  "sourceBase": "nuxt_link_hayai.md",
+  "sourceExt": ".md"
+}

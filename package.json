@@ -8,7 +8,7 @@
     "dev": "nuxt --port 11451",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt build && nuxt export",
+    "generate": "npm run markdown && nuxt build && nuxt export",
     "staticdev": "nuxt serve",
     "markdown": "npm run post && npm run page",
     "page": "processmd contents/pages/**/*.md --stdout --outputDir contents/pages/json > contents/pages/summary.json --markdownOptions.linkify",
