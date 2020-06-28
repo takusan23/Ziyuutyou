@@ -11,6 +11,7 @@
         color="indigo"
         text-color="white"
         :to="`/posts/tag/${tag}`"
+        nuxt
       >
         <v-avatar left>
           <v-icon>mdi-tag-text-outline</v-icon>

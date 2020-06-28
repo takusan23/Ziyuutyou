@@ -10,6 +10,7 @@
       v-for="item in blogItems"
       :key="item.title"
       :to="`/posts/${item.fileName}`"
+      nuxt
     >
       <div class="headline mb-1 titleHover">{{item.title}}</div>
       <v-divider></v-divider>

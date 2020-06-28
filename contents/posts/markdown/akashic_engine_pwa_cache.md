@@ -125,7 +125,7 @@ index.htmlのあるところに`sw.js`を作成します。
 ```
 
 # ここまででできたファイル
-`image`ファイル以外はみんなあるよね？  
+`image`フォルダ以外はみんなあるよね？  
 ![Imgur](https://imgur.com/ffmuHM6.png)
 
 # sw.jsを書く
@@ -271,15 +271,20 @@ self.addEventListener('activate', function (event) {
 
 # Web Server for Chrome を開いて
 `CHOOSE FOLDER`を押して、`index.html`のあるフォルダを指定します。  
-そしたら`Web Server`のスイッチを押して起動させます。  
+そしたら`Web Server`のスイッチを押して起動させます。 
 
-起動できたら、`F12`おして`Application`タブを押します。
+起動できたら、`http://127.0.0.1`から始まるURLが`Web Server URL(s)`の下に表示されるので押します。するとWebページが表示されるようになるんですね～
+
+そしたらWebページを開いた状態で`F12`おして`Application`タブを押します。
 
 その中から`Cache Storage`を探して、キャッシュが取得できてるか確認しましょう。
 
 ![Imgur](https://i.imgur.com/PWEuyxl.png)
 
 このように登録されていれば完成です。おめ！
+
+ちなみに：本当なら`index.html`をブラウザで開くだけで見れるわけですが、Service Workerを動かすためにはURLが `https`で始まるか`localhost（127.0.0.1）`で始まる必要があるようです。  
+だから**Web Server for Chrome**を利用する必要があったのですね。
 
 # 本当にオフラインで動くの？
 
