@@ -37,7 +37,9 @@ export default {
     });
     // タグを含んでいるキー配列
     const hasKeyList = sortedKeyList.filter(key => {
-      return this.fileMap[key].tags.includes(this.tagName); // タグを含んでいるかフィルター
+      return this.fileMap[key].tags
+        .map(tag => tag.toUpperCase())  // 大文字小文字は考えないのですべて大文字へ（なんか勝手に302で小文字に統一されるんだけどなに？）
+        .includes(this.tagName.toUpperCase()); // タグを含んでいるかフィルター。
     });
     // 記事入れる
     this.blogItems = hasKeyList.map(key => this.fileMap[key]);
