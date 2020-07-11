@@ -119,6 +119,8 @@ data class CommentCollectionEntity(
 クエリもここに書きます。  
 ここでは一般的に使いそうな動作を例として置いとくので、各自Entityクラス名等を書き換えてください。
 
+ファイル名は`CommentCollectionDAO.kt`で
+
 ```kotlin
 /**
  * データベースへアクセスするときに使う関数を定義する
@@ -153,7 +155,8 @@ interface CommentCollectionDAO {
 なくない？
 
 ### Database
-中心的な役割を持ちます。
+中心的な役割を持ちます。  
+ファイル名は`CommentCollectionDB.kt`で
 
 ```kotlin
 /**
