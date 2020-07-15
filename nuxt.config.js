@@ -167,6 +167,14 @@ export default {
     theme_color: '#5870cb',
     background_color: '#5870cb',
     display: 'standalone',
+    shortcuts: [
+      {
+        name: "記事一覧",
+        short_name: "記事一覧",
+        description: "記事一覧を開きます",
+        url: "/posts/page/1/"
+      }
+    ]
   },
   server: {
     host: '0.0.0.0' // デフォルト: localhost
