@@ -15,15 +15,15 @@ export default {
   components: {
     FirstCard,
     ProfileCard,
-    LinkCard
+    LinkCard,
   },
   head() {
     return {
       //
     };
   },
-  mounted() {
-    document.getElementById("title").innerText = "たくさんの自由帳";
-  }
+  created() {
+    this.$store.commit("setBarTitle", "トップページ");
+  },
 };
 </script>

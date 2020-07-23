@@ -1,66 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
 
-/** 一覧に表示する記事の数。 */
-const PAGE_LIMIT = 10;
-
-/** ブログ記事のファイル構成JSON。分割代入だと名前衝突する事に気付くまで時間かかった。マジでJavaScriptむずい */
-const postsJSON = require('./contents/posts/summary.json');
-
-/** 固定ページのファイル構成JSON。*/
-const pagesJSON = require('./contents/pages/summary.json');
-
-/** 
- * ファイルパスからファイルの名前取り出す
- * @param filepath ファイルのパス contents/posts/markdown/first.md みたいなやつ
- * @param folderName フォルダ名。 posts / posts かな。
- *  */
-const sourceFileNameToUrl = (filepath, folderName) => {
-  const name = filepath.replace(`contents/${folderName}/markdown/`, '').replace('.md', '')
-  return `/${folderName}/${name}/`
-}
-
-/** タグが含まれている記事一覧のパス配列生成関数。 */
-const generateTagPageRoutesList = () => {
-  // 記事オブジェクト一覧配列を生成する。キーだけの配列にしてmapで取り出す
-  const blogItems = Object.keys(postsJSON.fileMap).map(key => postsJSON.fileMap[key])
-  // タグだけの配列を作る
-  const allTagItems = blogItems.map(blog => blog.tags).flat()
-  // 被りを消す。new Set()でいいらしい
-  const tagList = [...new Set(allTagItems)]
-  // パス生成。こんな感じの→ /posts/tag/自作ブログ みたいな感じに
-  const pathList = tagList.map(tagName => `/posts/tag/${tagName}/`)
-  return pathList
-}
-
-/** 次のページ機能をつける。そうしないと記事一覧にどばーってなってスクロール大変になる */
-const generatePagenationRoutesList = () => {
-  // 何ページ必要か計算する（10で割ればいいっしょ）。ただ1ページ目は最低限必要なので1足す
-  const calc = Math.floor(postsJSON.sourceFileArray.length / PAGE_LIMIT) + 1
-  // ページ分だけ動的ルーティングの配列出す？
-  const dynamicRouterPathList = []
-  // console.log(`ページ数：${calc} / 記事数：${postsJSON.sourceFileArray.length}`)
-  // ページ生成。1ページ目から作るので1からスタート
-  for (let i = 1; i <= calc; i++) {
-    dynamicRouterPathList.push(`/posts/page/${i}/`)
-  }
-  return dynamicRouterPathList
-}
-
-/** ブログ記事用の動的ルーティングに使う配列を返す */
-const generateDynamicRoutesList = postsJSON.sourceFileArray.map(sourceFileName => {
-  return sourceFileNameToUrl(sourceFileName, 'posts');
-});
-
-/** 固定ページ用の動的ルーティングに使う配列を返す関数 */
-const generatePagesFileDynamicRoutesList = pagesJSON.sourceFileArray.map(sourceFileName => {
-  return sourceFileNameToUrl(sourceFileName, 'pages');
-});
-
-/** 静的サイトジェネレート関数。配列(pages/とposts/)くっつける */
-const generateRoutes = callback => {
-  callback(null, [generatePagesFileDynamicRoutesList, generateDynamicRoutesList, generatePagenationRoutesList(), generateTagPageRoutesList()].flat())
-}
-
 export default {
   // 静的サイト書き出し。universalとstatic入れてね
   mode: 'universal',
@@ -89,8 +28,8 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/css/styles.css',
-    '~/assets/css/vs2015.css'
+    '~/assets/css/styles.css'
+    // '~/assets/css/vs2015.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -109,7 +48,8 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    '@nuxt/content'
   ],
   /*
   ** vuetify module configuration

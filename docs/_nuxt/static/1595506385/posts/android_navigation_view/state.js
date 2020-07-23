@@ -1,0 +1,1 @@
+window.__NUXT__={staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1595506385",layout:"default",error:null,state:{barTitle:"AndroidのNavigationViewって便利じゃねって話。下から出てくるメニューの作り方"},serverRendered:true,routePath:"\u002Fposts\u002Fandroid_navigation_view",config:{}};

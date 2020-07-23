@@ -1,4 +1,4 @@
-// 次のページのやつ。
+// 記事一覧ページ
 
 <template>
   <v-app>
@@ -27,83 +27,46 @@
   </v-app>
 </template>
 
-<script>
-// import { sourceFileArray, fileMap } from "../../../contents/posts/summary.json";
-import BlogItemCard from "../../../components/BlogItemCard.vue";
+<script lang="ts">
+import Vue from "vue";
+import BlogItemCard from "@/components/BlogItemCard.vue";
 
-// 一度に表示する記事の数
-const PAGE_LIMIT = 10;
-
-export default {
-  // 記事一覧のJSON
-  asyncData({ params }) {
-    return Object.assign({}, require("../../../contents/posts/summary.json"), {
-      params
-    });
+export default Vue.extend({
+  name: "bloglist",
+  // 記事一覧を取り出す
+  async asyncData({ $content, params }) {
+    const blogItems = await $content(`posts`)
+      .sortBy("created_at", "desc") // 投稿日時順に並び替える
+      .skip((parseInt(params.id) - 1) * 10) // 指定した分飛ばす。今回は表示ページから１引いて１０掛けた答え分飛ばす。（例:2ページ目の場合は(2-1)*10 = 10記事飛ばす）
+      .limit(10) // 10記事取得する
+      .fetch();
+    return { blogItems };
   },
-  data: () => {
+  data() {
     return {
       blogItems: [],
       nextButtonVisible: false,
       nextTo: "2",
       backButtonVisible: false,
       backTo: "1",
-      currentPage: "1"
+      currentPage: String(this.$route.params.id),
     };
   },
   created() {
-    // ページ数　最初のページは /posts/page/1 1~10まで
-    const pageId = parseInt(this.$route.params.id);
-    this.currentPage = pageId;
-    // なんかしらんけど並び順が新しい順とは限らないらしい？
-    const sortedKeyList = Object.keys(this.fileMap);
-    sortedKeyList.sort((a, b) => {
-      const aDate = new Date(this.fileMap[a].created_at).getTime();
-      const bDate = new Date(this.fileMap[b].created_at).getTime();
-      if (aDate > bDate) return -1;
-      if (aDate < bDate) return 1;
-      return 0;
-    });
-    // 範囲内の記事を取り出す
-    const pageList = sortedKeyList.slice(
-      (pageId - 1) * PAGE_LIMIT,
-      pageId * PAGE_LIMIT
-    );
-    // キーを取り出す
-    pageList.forEach(title => {
-      // 記事一個ずつ取る
-      const blog = this.fileMap[title];
-      // 名前
-      const name = blog.sourceBase.replace(".md", "");
-      blog.fileName = name;
-      // 配列に追加
-      this.blogItems.push(blog);
-    });
-    // 表示済みブログ件数。
-    const showedBlogCount = pageId * PAGE_LIMIT; // 3ページ目だったら30件表示されてることに
-    // 「次のページ」ボタンを付けるかどうか。一覧より記事数のほうが多くて、今表示してる記事が一個以上有るとき表示する。
-    if (pageId * 10 < this.sourceFileArray.length) {
-      this.nextTo = `${pageId + 1}`;
-      this.nextButtonVisible = true;
-    }
-    // 1ページ以外の場合は戻るボタンおく
-    if (pageId > 1) {
-      this.backTo = `${pageId - 1}`;
-      this.backButtonVisible = true;
-    }
-  },
-  mounted() {
-    // ToolBarのテキスト変えとく
-    document.getElementById("title").innerText = `記事一覧`;
-  },
-  methods: {
-    //
+    // 次のページ行けるか。まあ面倒くさいので10件取れてたら表示するようにする
+    this.nextButtonVisible = this.blogItems.length == 10;
+    this.nextTo = String(parseInt(this.currentPage) + 1); // 現在のページ+1
+    // 前のページ行けるか。まあ面倒くさいので1ページ目以外なら表示するようにする
+    this.backButtonVisible = parseInt(this.currentPage) > 1;
+    this.backTo = String(parseInt(this.currentPage) - 1); // 現在のページ-1
+    // Vuexてやつでバーのタイトルを変更している。
+    this.$store.commit("setBarTitle", "記事一覧");
   },
   components: {
-    BlogItemCard
+    BlogItemCard,
   },
   head: () => ({
-    title: "記事一覧"
-  })
-};
+    title: "記事一覧",
+  }),
+});
 </script>

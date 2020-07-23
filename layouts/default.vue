@@ -42,7 +42,8 @@
     <!-- AppBar -->
     <v-app-bar :clipped-left="clipped" color="secondary" extended>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-show="!drawer" id="title" v-text="this.$route.meta.title" />
+      <!-- タイトル -->
+      <v-toolbar-title v-show="!drawer" id="title" v-text="this.$store.state.barTitle" />
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -67,24 +68,24 @@ export default {
         {
           icon: "mdi-home-outline",
           title: "トップページ（なにに使うかは未定）",
-          to: "/"
+          to: "/",
         },
         {
           icon: "mdi-format-list-checkbox",
           title: "記事一覧",
-          to: "/posts/page/1"
+          to: "/posts/page/1",
         },
         {
           icon: "mdi-chart-bubble",
           title: "About",
-          to: "/pages/about"
-        }
+          to: "/pages/about",
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: "Vuetify.js",
-      drawerTitle: "たくさんの自由帳"
+      drawerTitle: "たくさんの自由帳",
     };
   },
   created() {
@@ -103,11 +104,11 @@ export default {
     // リアルタイム監視。Androidだと動かなかった
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", e => {
+      .addEventListener("change", (e) => {
         const isDeviceDarkModeEnabled = e.matches;
         // Vuetify切り替える
         this.$vuetify.theme.dark = isDeviceDarkModeEnabled;
       });
-  }
+  },
 };
 </script>

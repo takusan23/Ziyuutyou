@@ -2,69 +2,41 @@
 
 <template>
   <v-app>
-    <BlogItemCard :blogItems="blogItems"></BlogItemCard>
+    <BlogItemCard :blogItems="findItem"></BlogItemCard>
   </v-app>
 </template>
 
-<script>
-// import { sourceFileArray, fileMap } from "../../../contents/posts/summary.json";
-import BlogItemCard from "../../../components/BlogItemCard.vue";
+<script lang="ts">
+import Vue from "vue";
+import BlogItemCard from "@/components/BlogItemCard.vue";
 
-export default {
-  // 記事一覧のJSON
-  asyncData({ params }) {
-    return Object.assign({}, require("../../../contents/posts/summary.json"), {
-      params
-    });
-  },
-  data: () => ({
-    /** タグの名前 */
-    tagName: "",
-    /** タグが含まれているブログ一覧 */
-    blogItems: []
-  }),
-  created() {
-    // タグの名前
-    this.tagName = this.$route.params.id;
-    // なんかしらんけど並び順が新しい順とは限らないらしい？
-    const sortedKeyList = Object.keys(this.fileMap);
-    sortedKeyList.sort((a, b) => {
-      const aDate = new Date(this.fileMap[a].created_at).getTime();
-      const bDate = new Date(this.fileMap[b].created_at).getTime();
-      if (aDate > bDate) return -1;
-      if (aDate < bDate) return 1;
-      return 0;
-    });
-    // タグを含んでいるキー配列
-    const hasKeyList = sortedKeyList.filter(key => {
-      return this.fileMap[key].tags
-        .map(tag => tag.toUpperCase())  // 大文字小文字は考えないのですべて大文字へ（なんか勝手に302で小文字に統一されるんだけどなに？）
-        .includes(this.tagName.toUpperCase()); // タグを含んでいるかフィルター。
-    });
-    // 記事入れる
-    this.blogItems = hasKeyList.map(key => this.fileMap[key]);
-    // ファイル名入れる
-    this.blogItems.forEach(blog => {
-      // 名前
-      const name = blog.sourceBase.replace(".md", "");
-      blog.fileName = name;
-    });
-  },
-  // タイトル変更など
-  head() {
-    const title = `タグ：${this.$route.params.id}`;
-    return {
-      title: title
-    };
-  },
+export default Vue.extend({
+  // 使うコンポーネント
   components: {
-    BlogItemCard
+    BlogItemCard,
   },
-  // TitleBar変える
-  mounted() {
-    document.getElementById(
-      "title"
-    ).innerText = `${this.$route.params.id} / 記事数：${this.blogItems.length}`;
-  }
-};
+  // データ取得
+  async asyncData({ $content, params }) {
+    const findItem = await $content("posts")
+      .where({ tags: { $contains: [params.id] } }) // タグが含まれているかどうか。
+      .sortBy("created_at", "desc") // 投稿日時順に並び替える
+      .fetch();
+    return { findItem };
+  },
+  created() {
+    this.$store.commit(
+      "setBarTitle",
+      `タグ名：${this.$route.params.id} / 記事：${
+        (this as any).findItem.length
+      } 件`
+    );
+  },
+  head() {
+    // エラーでちゃうからanyで。解決方法ある？
+    const title = `タグ名：${this.$route.params.id} / 記事：${
+      (this as any).findItem.length
+    } 件`;
+    return { title: title };
+  },
+});
 </script>

@@ -24,14 +24,14 @@ export default {
   data: () => ({ sheet: false, instanceInput: "" }),
   methods: {
     // Mastodonの共有出す
-    openShare: function() {
+    openShare: function () {
       window.open(
         `https://${this.instanceInput}/share?text=${document.title}\n${location.href}`,
         "_blank"
       );
       // 保存しとく
       localStorage.setItem("share_instance", this.instanceInput);
-    }
+    },
   },
   mounted() {
     // DOM生成後
@@ -39,6 +39,6 @@ export default {
     if (instanceName !== undefined) {
       this.instanceInput = instanceName;
     }
-  }
+  },
 };
 </script>
