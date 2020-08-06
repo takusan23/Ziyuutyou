@@ -6,6 +6,25 @@
     src: url('../fonts/Koruri-Regular-sub.eot?#iefix') format('embedded-opentype'), url('../fonts/Koruri-Regular-sub.woff') format('woff'), url('../fonts/Koruri-Regular-sub.ttf') format('truetype');
 }
 
+/* コードの部分を直す */
+.line-numbers{
+    background-color: #353535 !important;
+}
+/* 謎の影消す */
+span{
+    text-shadow: initial !important;
+}
+/* イコールに謎の背景色が当たっているので消す */
+.token{
+background-color: initial !important;
+}
+/* 角を丸めるなど */
+pre{
+    text-shadow: initial !important;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important; 
+    border-radius: 10px 10px 0px 0px !important;
+}
+
 /* VuetifyのせいでCodeタグに勝手にCSS適用されるので強制上書き */
 
 .v-application code {
