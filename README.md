@@ -27,15 +27,7 @@ npm run dev
 
 ## 記事の保存場所
 
-`contents/posts/markdown` にあります。
-
-書いたら
-
-```console
-npm run markdown
-```
-
-を実行してJSONファイルを書き出してください。  
+`content/posts/markdown` にあります。
 
 ## 静的サイトジェネレート
 

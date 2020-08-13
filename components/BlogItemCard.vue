@@ -3,7 +3,7 @@
 
 <template>
   <div>
-    <v-card class="ma-2 pa-5" v-for="item in blogItems" outlined :key="item.title" nuxt link>
+    <v-card class="ma-2 pa-5" v-for="item in blogItems" outlined :key="item.title">
       <nuxt-link :to="`/posts/${item.slug}`">
         <div class="headline mb-1 titleHover">{{item.title}}</div>
       </nuxt-link>
