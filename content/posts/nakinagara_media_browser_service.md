@@ -48,11 +48,12 @@ https://android-developers.googleblog.com/2020/08/playing-nicely-with-media-cont
 
 ![Imgur](https://imgur.com/IpX69hG.png)
 
-再生ボタンだけが表示されてる。これを押すと、
-
+このMediaSession通知が表示されるまでに、  
 - `onGetRoot`が呼ばれる（実装で詳しく）
 - `onLoadChildren`が呼ばれる（実装で詳しく）
     - 最後の曲をここで返す（非同期おｋ）
+
+再生ボタンだけが表示されてる。これを押すと、
 - `MediaSessionCompat.setCallBack`の`onPrepare()`が呼ばれる
 - `MediaSessionCompat.setCallBack`の`onPlay()`が呼ばれる
     - ここらへんで通知を更新する？
