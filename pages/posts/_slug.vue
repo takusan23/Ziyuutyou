@@ -20,6 +20,13 @@
         <MastodonShare></MastodonShare>
       </v-row>
     </v-card-actions>
+    <!-- スナックバー -->
+    <v-snackbar v-model="snackbar">
+      {{ snackbarText }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="red" text v-bind="attrs" @click="snackbar = false">閉じる</v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -39,6 +46,10 @@ export default Vue.extend({
     TagGroup,
     MastodonShare,
   },
+  data: () => ({
+    snackbarText: "コピーした！",
+    snackbar: false,
+  }),
   // タイトル変更に使う
   head() {
     // エラーでちゃうからanyで。解決方法ある？
@@ -56,6 +67,22 @@ export default Vue.extend({
   // タイトルバー
   created() {
     this.$store.commit("setBarTitle", (this as any).article.title);
+  },
+  mounted() {
+    Array.from(document.getElementsByTagName("pre")).forEach((pre) => {
+      pre.addEventListener("click", () => {
+        // コード押した時
+        // 見えないTextAreaを作成する
+        const goneTextArea = document.createElement("textarea");
+        goneTextArea.value = pre.textContent ?? "";
+        document.body.appendChild(goneTextArea);
+        goneTextArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(goneTextArea);
+        // コピーしたSnackBarを出す
+        this.snackbar = true;
+      });
+    });
   },
 });
 </script>

@@ -7,21 +7,28 @@
 }
 
 /* コードの部分を直す */
-.line-numbers{
+
+.line-numbers {
     background-color: #252525 !important;
 }
+
 /* 謎の影消す */
-span{
+
+span {
     text-shadow: initial !important;
 }
+
 /* イコールに謎の背景色が当たっているので消す */
-.token{
-background-color: initial !important;
+
+.token {
+    background-color: initial !important;
 }
+
 /* 角を丸めるなど */
-pre{
+
+pre {
     text-shadow: initial !important;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important; 
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important;
     border-radius: 10px 10px 0px 0px !important;
 }
 
@@ -32,6 +39,7 @@ pre{
     border-radius: 5px !important;
     font-family: 'Koruri Regular';
     margin: 5px !important;
+    font-size: initial !important;
     padding: 5px !important;
 }
 

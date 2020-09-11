@@ -131,5 +131,12 @@ export default {
       'markdown-it-footnote', // [^1]←注釈使えるように
       'markdown-it-highlight',
     ]
+  },
+  content: {
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-vsc-dark-plus.css'
+      }
+    }
   }
 }
