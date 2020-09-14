@@ -21,68 +21,99 @@ https://github.com/takusan23/TatimiDroid/issues/2
 
 紐付けに **二段階認証が必須 もしくは そもそも連携してない** 銀行以外に口座を持っている人全てが対象になる一大事です。  
 
+# 環境
+| なまえ                                | あたい               |
+|---------------------------------------|----------------------|
+| OS                                    | Windows 10 Pro       |
+| 使うソフト（APIを叩ければ何でもいい） | Advanced REST client |
+
 # ログインするまで
 
-`User-Agent`は入れましょうね。
+`User-Agent`は入れましょうね。  
+アクセスする際のCookieには`mfa_token`と`nicosid`が必要の模様です。(ログインAPI以外)  
+リダイレクトは無効にしましょう。
 
-- 普通にログインする（ログインAPIを叩く）
-    - https://account.nicovideo.jp/login/redirector
-    - POST
-        - Content-Type : application/x-www-form-urlencoded
-        - mail_tel={メアド}&password={パスワード}
-    - 成功するとステータスコードが302
+**メールで認証コードを受け取る**方法と**スマホのアプリ(Google Authenticator)** の方法がありますが、おそらく同じ処理（プログラム）が使えます。
 
-- ログインAPIのレスポンスから以下の内容を控える
-    - `Set-Cookie`
-        - `mfa_session=`と`nicosid=`の値
-    - `Location`
-        - 二段階認証のWebページURLが入ってる
-        - https://account.nicovideo.jp/mfa?continue
-            - こんな感じのURLだと思う
-        - 二段階認証が未設定なら、`https://secure.nicovideo.jp/secure/`が入ってくるので分岐できる
+**なので！おすすめはスマホのアプリの方です（メール認証数秒かかるし）** (スマホなくしたら詰むけど)
 
-- LocationのURLへアクセスする（こんなの：https://account.nicovideo.jp/mfa?continue）
-    - GET
-    - `Cookie`の指定が必須
-        - `mfa_session=なんとか;nicosid=なんとか`
-            - ログインAPIのSet-Cookieから作れます
-    - 成功するとステータスコードが200
+## 1 普通にログインする（ログインAPIを叩く）
+- https://account.nicovideo.jp/login/redirector
+- POST
+    - Content-Type : application/x-www-form-urlencoded
+    - mail_tel={メアド}&password={パスワード}
+- 成功するとステータスコードが302
 
-- スクレイピング
-    - HTML内（レスポンスボディ）に`<form>`要素が一個だけあるのでその要素の`action`属性の値を取ります。
-        - こんな感じの：`<form action="/mfa?site=なんとか`
-        - `/mfa?site=`が始まる値を取れれば成功
-        - 先頭に`https://account.nicovideo.jp`をつけて、`https://account.nicovideo.jp/mfa?site=`の形にしてURLを完成させます。
+![Imgur](https://imgur.com/QLNGU3i.png)
 
-- 二段階認証のコード
+## 2 ログインAPIのレスポンスヘッダーから以下の内容を控える
+- `Set-Cookie`
+    - `mfa_session=`と`nicosid=`の値
+    - `mfa_session=------------;nicosid=-----.-----`みたいな感じで文字列連結させて（区切りは`;`）控える
+    - （実際はちゃんと英数字が入ってるけど今回は伏せてる）
+- `Location`
+    - 二段階認証のWebページURLが入ってる
+    - https://account.nicovideo.jp/mfa?continue
+        - こんな感じのURLだと思う
+- 二段階認証が未設定の場合との分岐は、Set-Cookieにユーザーセッションがあるかどうか？
+
+
+## 3 LocationのURLへアクセスする（こんなの：https://account.nicovideo.jp/mfa?continue）
+- GET
+- `Cookie`の指定が必須
+    - **2 ログインAPIのレスポンスから以下の内容を控える**で控えたCookieを詰める
+    - `mfa_session=------------;nicosid=-----.-----`みたいな
+- 成功するとステータスコードが200
+    - HTMLが返ってくる
+    
+## 4 スクレイピング
+- HTML内（レスポンスボディ）に`<form>`要素が一個だけあるのでその要素の`action`属性の値を取ります。
+    - こんな感じの：`<form action="/mfa?site=なんとか`
+    - `/mfa?site=`が始まる値を取れれば成功
+    - 先頭に`https://account.nicovideo.jp`をつけて、`https://account.nicovideo.jp/mfa?site=`の形にしてURLを完成させます。
+
+画像だとここらへん  
+![Imgur](https://imgur.com/XOGHvxb.png)
+
+## 5 二段階認証のコード
+- メールの場合は
     - メールが来てるはずなので受信トレイを見に行ってください。
+- Google Authenticator
+    - アプリを開いてコードを確認する
 
-- 二段階認証をする
-    - URLは先ほど作成した、`https://account.nicovideo.jp/mfa?site=なんとか`
-    - POST
-        - Content-Type : application/x-www-form-urlencoded
-            - `otp={メールに書いてあった認証コード}&loginBtn=ログイン&device_name={デバイス名とかアプリ名}`
-            - デバイスを信頼させる場合は`&is_mfa_trusted_device=true`を追加でくっつける
-    - Cookie
-        - `mfa_session=なんとか;nicosid=なんとか`
-            - ログインAPIのSet-Cookieのやつ
-    - 成功するとステータスコードが302
+## 6 二段階認証をする
+- URLは先ほど作成した、`https://account.nicovideo.jp/mfa?site=なんとか`
+- POST
+    - Content-Type : application/x-www-form-urlencoded
+        - `otp={メールに書いてあった認証コード}&loginBtn=ログイン&device_name={デバイス名とかアプリ名}`
+        - デバイスを信頼させる場合は`&is_mfa_trusted_device=true`を追加でくっつける
+            - これするとレスポンスヘッダーの`Set-Cookie`に、`mfa_trusted_device_token`が入ってくる。
+            - 二回目以降はログインAPIを叩く際に、この値をくっつけてPOSTすればパスできる？（要検証）
+            - ということは、信頼してもCookieを消したら意味がない？
+- Cookie
+    - **2 ログインAPIのレスポンスから以下の内容を控える**で控えたCookieを詰める
+    - `mfa_session=------------;nicosid=-----.-----`みたいな
+- 成功するとステータスコードが302
 
-- 二段階認証のレスポンス
-    - レスポンスヘッダーの`Location`の値を取得
-        - このURLへアクセスするとユーザーセッションを取得する事ができる
+![Imgur](https://imgur.com/I42Q9FO.png)
 
-- ユーザーセッション取得
-    - 二段階認証のレスポンスヘッダーの`Location`の値へアクセス
-        - こんな感じの：`https://account.nicovideo.jp/login/mfa/callback?csrf_token=`
-    - GET
-    - Cookie
-        - `mfa_session=なんとか;nicosid=なんとか`
-            - ログインAPIのSet-Cookieのやつ
+## 7 二段階認証のレスポンス
+- レスポンスヘッダーの`Location`の値を取得
+    - このURLへアクセスするとユーザーセッションを取得する事ができる
 
-- レスポンスヘッダー
-    - `Set-Cookie`の中に`user_session`が入ってるはずです。
-    - お疲れさまでした！
+## 8 ユーザーセッション取得（これでAPI叩くの最後）
+- 二段階認証のレスポンスヘッダーの`Location`の値へアクセス
+- GET
+- Cookie
+    - **2 ログインAPIのレスポンスから以下の内容を控える**で控えたCookieを詰める
+    - `mfa_session=------------;nicosid=-----.-----`みたいな
+
+## 9 レスポンスヘッダーを確認
+- `Set-Cookie`の中に`user_session`が入ってるはずです。
+- お疲れさまでした！
+- 成功すると、ステータスコードは302になります
+
+![Imgur](https://imgur.com/UUyAIYZ.png)
 
 Cookieに`mfa_session`と`nicosid`を入れるのが必要みたいですね。  
 ~~nicosid入れないといけないことに気付くのが長かった~~
@@ -169,7 +200,8 @@ class MainActivity : AppCompatActivity() {
         login_button.setOnClickListener {
             lifecycleScope.launch {
                 val response = postLogin("めあど", "ぱすわーど")
-                if (response.headers["Location"] == "https://secure.nicovideo.jp/secure/") {
+                // ユーザーセッションがあれば二段階認証ではない
+                if (response.headers.find { pair -> pair.second.contains("user_session=user_session") } != null) {
                     println("二段階認証では有りません")
                     println("ユーザーセッション：${parseUserSession(response)}")
                 } else {
@@ -307,19 +339,11 @@ class MainActivity : AppCompatActivity() {
 
 https://github.com/takusan23/NicoTwoFactorLoginSample
 
+# 要検証
+
+
 # おわりに
 途中から`たちみどろいど`の方やりだしちゃったから書く気なくしたので雑です。  
 
-あと`Advanced REST client`ってので検証してたんだけど、なんか帰ってくる中身が`OkHttp`のときと違う？（最後のユーザーセッション取得が成功しなかった。`csrf_token`のパラメータが足りない）  
-
-そういうときは、二段階認証のWebページへアクセスするした時にHTML内にあったURLから、`csrf_token`の値を取って、二段階認証APIのURLのパラメータにくっつければいけます。
-
-`https://account.nicovideo.jp/login/mfa/callback?site=spniconico&mfa_result=なんとか`
-
-↓
-
-二段階認証のWebページ内にあったURL（form要素のactionに入ってたURL）から、`csrf_token`のパラメータを取ってつける
-
-↓
-
-`https://account.nicovideo.jp/login/mfa/callback?site=spniconico&mfa_result=なんとか&csrf_token=なんとか`
+なんかしらんけど、使うAPIテストツールによって、Set-Cookieが足りなかったりするんだけどなんなん？  
+(nicosidが無い時があった。ない場合はしゃーないから無いままログインを完了させればいいっぽい？)
