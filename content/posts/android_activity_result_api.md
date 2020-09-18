@@ -21,6 +21,16 @@ startActivityForResult よりも簡素化された？。
 
 # Storage Access Framework での例
 
+FragmentとActivityのバージョンをあげます。
+多分Fragment/Activity両方書かないとエラー出ると思います。
+
+```gradle
+dependencies {
+    implementation 'androidx.activity:activity-ktx:1.2.0-alpha08'
+    implementation 'androidx.fragment:fragment:1.3.0-alpha08'
+}
+```
+
 ```kotlin
 class MainActivity : AppCompatActivity() {
 
