@@ -62,18 +62,18 @@ export default {
       dark: false,
       themes: {
         dark: {
-          primary: '#8c9eff',
-          accent: '#c0cfff',
-          secondary: '#5870cb',
+          primary: colors.indigo,
+          accent: colors.indigo.accent1,
+          secondary: colors.indigo.lighten1,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
         },
         light: {
-          primary: '#8c9eff',
-          accent: '#c0cfff',
-          secondary: '#5870cb'
+          primary: colors.indigo,
+          accent: colors.indigo.accent1,
+          secondary: colors.indigo.lighten1
         }
       }
     }
@@ -119,24 +119,12 @@ export default {
   server: {
     host: '0.0.0.0' // デフォルト: localhost
   },
-  /**
-   * マークダウンの設定？
-   */
-  markdownit: {
-    injected: true, // $md 使えるように
-    html: true, // HTMLタグを有効にする
-    linkify: true, // URLを見つけてリンクに,
-    typography: true, // ？
-    use: [
-      'markdown-it-footnote', // [^1]←注釈使えるように
-      'markdown-it-highlight',
-    ]
-  },
   content: {
     markdown: {
       prism: {
         theme: 'prism-themes/themes/prism-vsc-dark-plus.css'
       }
-    }
+    },
+    fullTextSearchFields: ['title']
   }
 }
