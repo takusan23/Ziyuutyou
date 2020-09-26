@@ -1,6 +1,12 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      fixed
+      app
+    >
       <!-- Drawerのヘッダー部分 -->
       <template v-slot:prepend>
         <v-list-item two-line>
@@ -10,10 +16,12 @@
           </v-list-item-avatar>
           <!-- 自由帳 の部分 -->
           <v-list-item-content>
-            <v-list-item-title>{{drawerTitle}}</v-list-item-title>
+            <v-list-item-title>{{ drawerTitle }}</v-list-item-title>
             <v-list-item-subtitle>
               <v-icon color="indigo">mdi-book</v-icon>
-              <a href="https://takusan23.github.io/Bibouroku/" target="_blank">前のブログ</a>
+              <a href="https://takusan23.github.io/Bibouroku/" target="_blank"
+                >前のブログ</a
+              >
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -21,7 +29,9 @@
       <!-- ダークモードスイッチ -->
       <v-switch
         class="text-center ma-2"
-        :append-icon="`${$vuetify.theme.dark ? 'mdi-weather-night' : 'mdi-weather-sunny'}`"
+        :append-icon="`${
+          $vuetify.theme.dark ? 'mdi-weather-night' : 'mdi-weather-sunny'
+        }`"
         v-model="$vuetify.theme.dark"
         label="テーマ切り替え"
       ></v-switch>
@@ -29,7 +39,13 @@
       <v-divider></v-divider>
       <!-- メニュー -->
       <v-list nav>
-        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -40,33 +56,20 @@
       </v-list>
     </v-navigation-drawer>
     <!-- AppBar -->
-    <v-app-bar :clipped-left="clipped" color="secondary" extended style="position: relative">
+    <v-app-bar
+      :clipped-left="clipped"
+      color="secondary"
+      extended
+      style="position: relative"
+    >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <!-- タイトル -->
-      <v-toolbar-title v-show="!drawer" id="title" v-text="this.$store.state.barTitle" />
+      <v-toolbar-title
+        v-show="!drawer"
+        id="title"
+        v-text="this.$store.state.barTitle"
+      />
       <v-spacer />
-
-      <!-- 検索ボックス -->
-      <v-card width="250px" class="ma-1 pa-1" color="accent">
-        <!-- 検索サジェスト -->
-        <v-autocomplete
-          :search-input.sync="searchText"
-          hide-details
-          prepend-icon="mdi-text-box-search-outline"
-          label="検索"
-          hide-no-data
-          :items="resultBlogItems"
-          outlined
-          clearable
-          dense
-        >
-          <template v-slot:selection="{  }"></template>
-          <!-- サジェストのリスト。カスタマイズできる -->
-          <template v-slot:item="{ item }">
-            <nuxt-link :to="`/posts/${item.value}`" v-text="item.text"></nuxt-link>
-          </template>
-        </v-autocomplete>
-      </v-card>
     </v-app-bar>
 
     <v-main>
@@ -136,27 +139,6 @@ export default {
         this.$vuetify.theme.dark = isDeviceDarkModeEnabled;
       });
   },
-  watch: {
-    // 検索ボックスを監視する
-    async searchText(searchText) {
-      if (!searchText) {
-        this.resultBlogItems = [];
-        return;
-      }
-      // nuxt/contentから取得
-      this.resultBlogItems = await this.$content("posts")
-        .only(["title", "slug"])
-        .sortBy("created_at", "asc")
-        .search(searchText)
-        .fetch();
-      // なんか変形させないと扱えないっぽい？
-      this.resultBlogItems = this.resultBlogItems.map((item) => {
-        return {
-          text: item.title,
-          value: item.slug,
-        };
-      });
-    },
-  },
+  watch: {},
 };
 </script>
