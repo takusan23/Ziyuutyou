@@ -37,5 +37,3 @@ Cookieを無効化することでGoogle Analyticsの収集を拒否すること�
     - CSSわからんけどそれなりにいい感じにできる。    
 - Koruri Regular
     - このブログのフォント。かわいい
-- Markdown-it
-    - `markdown-it-footnote`入れたので注釈が使えるようになった。
