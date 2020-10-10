@@ -2,10 +2,10 @@
 
 <template>
   <!-- ToolbarにかぶせるためにMarginを上に引っ張る？ -->
-  <v-card elevation="10" class="pa-5" style="margin-top: -60px;">
+  <v-card elevation="10" class="pa-5" style="margin-top: -60px">
     <div class="post-meta pa-2">
       <v-icon>mdi-file-upload-outline</v-icon>
-      <time>{{ (new Date(article.created_at)).toLocaleDateString() }} 投稿</time>
+      <time>{{ new Date(article.created_at).toLocaleDateString() }} 投稿</time>
     </div>
     <TagGroup :tags="article.tags"></TagGroup>
     <!-- 区切り線 -->
@@ -20,13 +20,6 @@
         <MastodonShare></MastodonShare>
       </v-row>
     </v-card-actions>
-    <!-- スナックバー -->
-    <v-snackbar v-model="snackbar">
-      {{ snackbarText }}
-      <template v-slot:action="{ attrs }">
-        <v-btn color="red" text v-bind="attrs" @click="snackbar = false">閉じる</v-btn>
-      </template>
-    </v-snackbar>
   </v-card>
 </template>
 
@@ -46,10 +39,7 @@ export default Vue.extend({
     TagGroup,
     MastodonShare,
   },
-  data: () => ({
-    snackbarText: "コピーした！",
-    snackbar: false,
-  }),
+  data: () => ({}),
   // タイトル変更に使う
   head() {
     // エラーでちゃうからanyで。解決方法ある？
@@ -69,20 +59,20 @@ export default Vue.extend({
     this.$store.commit("setBarTitle", (this as any).article.title);
   },
   mounted() {
-    Array.from(document.getElementsByTagName("pre")).forEach((pre) => {
-      pre.addEventListener("click", () => {
-        // コード押した時
-        // 見えないTextAreaを作成する
-        const goneTextArea = document.createElement("textarea");
-        goneTextArea.value = pre.textContent ?? "";
-        document.body.appendChild(goneTextArea);
-        goneTextArea.select();
-        document.execCommand("copy");
-        document.body.removeChild(goneTextArea);
-        // コピーしたSnackBarを出す
-        this.snackbar = true;
-      });
-    });
+    // Array.from(document.getElementsByTagName("pre")).forEach((pre) => {
+    //   pre.addEventListener("click", () => {
+    //     // コード押した時
+    //     // 見えないTextAreaを作成する
+    //     const goneTextArea = document.createElement("textarea");
+    //     goneTextArea.value = pre.textContent ?? "";
+    //     document.body.appendChild(goneTextArea);
+    //     goneTextArea.select();
+    //     document.execCommand("copy");
+    //     document.body.removeChild(goneTextArea);
+    //     // コピーしたSnackBarを出す
+    //     this.snackbar = true;
+    //   });
+    // });
   },
 });
 </script>
