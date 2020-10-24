@@ -1,5 +1,5 @@
 ---
-title: 泣きながらAndroidのMediaBrowserServiceを作る
+title: AndroidのMediaBrowserServiceを作る
 created_at: 2020-08-30
 tags:
 - Android

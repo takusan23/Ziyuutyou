@@ -4,7 +4,7 @@
   <v-card class="ma-2 pa-2" elevation="10">
     <v-card-title class="headline">備忘録をNuxtで作り直してみる。</v-card-title>
     <v-card-text>
-      <p>JavaScript + Nuxt.js + processmd + Vuetify</p>
+      <p>TypeScript + Nuxt.js + content + Vuetify</p>
     </v-card-text>
     <v-card-actions>
       <v-spacer />

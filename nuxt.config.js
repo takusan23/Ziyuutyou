@@ -49,7 +49,8 @@ export default {
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit',
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/sitemap'
   ],
   /*
   ** vuetify module configuration
@@ -126,5 +127,16 @@ export default {
       }
     },
     fullTextSearchFields: ['title']
+  },
+  /**
+   * サイトマップ書き出し
+   */
+  sitemap: {
+    hostname: 'https://takusan.negitoro.dev',
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const posts = await $content('posts').only(['path']).fetch()
+      return posts.map(post => post.path)      
+    }
   }
 }
