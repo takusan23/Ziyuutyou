@@ -29,7 +29,7 @@ export default Vue.extend({
   head() {
     // エラーでちゃうからanyで。解決方法ある？
     const title = (this as any).article.title;
-    const url = `posts/${(this as any).article.slug}/`;
+    const url = `https://takusan.negitoro.dev/posts/${(this as any).article.slug}`;
     return {
       title: title,
       meta: [
