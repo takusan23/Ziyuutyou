@@ -133,10 +133,11 @@ export default {
    */
   sitemap: {
     hostname: 'https://takusan.negitoro.dev',
+    trailingSlash: true,
     routes: async () => {
       const { $content } = require('@nuxt/content')
       const posts = await $content('posts').only(['path']).fetch()
-      return posts.map(post => post.path)      
+      return posts.map(post => post.path)
     }
   }
 }

@@ -17,8 +17,10 @@ export default Vue.extend({
   },
   // データ取得
   async asyncData({ $content, params }) {
+    // 正規表現で大文字小文字を無視する
+    let regex = new RegExp(params.id, "i");
     const findItem = await $content("posts")
-      .where({ tags: { $contains: [params.id] } }) // タグが含まれているかどうか。
+      .where({ tags: { $regex: regex } }) // タグが含まれているかどうか。
       .sortBy("created_at", "desc") // 投稿日時順に並び替える
       .fetch();
     return { findItem };
