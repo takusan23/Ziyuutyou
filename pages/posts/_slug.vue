@@ -3,10 +3,23 @@
 <template>
   <!-- ToolbarにかぶせるためにMarginを上に引っ張る？ -->
   <v-card elevation="10" class="pa-5" style="margin-top: -60px">
-    <div class="post-meta pa-2">
-      <v-icon>mdi-file-upload-outline</v-icon>
-      <time>{{ new Date(article.created_at).toLocaleDateString() }} 投稿</time>
-    </div>
+    <v-row>
+      <!-- 投稿日 -->
+      <v-col class="post-meta pa-1">
+        <v-icon>mdi-file-upload-outline</v-icon>
+        <time
+          >{{ new Date(article.created_at).toLocaleDateString() }} 投稿</time
+        >
+      </v-col>
+      <!-- 文字数。nuxt.config.js参照 -->
+      <v-col class="post-meta pa-1">
+        <p style="text-align: end">
+          <v-icon>mdi-file-document-edit-outline</v-icon> (多分)
+          {{ article.text_count }} 文字
+        </p>
+      </v-col>
+    </v-row>
+    <!-- タグ -->
     <TagGroup :tags="article.tags"></TagGroup>
     <!-- 区切り線 -->
     <v-divider></v-divider>
@@ -30,7 +43,7 @@ import MastodonShare from "@/components/MastodonShare.vue";
 
 export default Vue.extend({
   // データ取得
-  async asyncData({ $content, params }) {
+  async asyncData({ $content, params, query }) {
     const article = await $content(`posts/${params.slug}`).fetch();
     return { article };
   },
@@ -44,7 +57,9 @@ export default Vue.extend({
   head() {
     // エラーでちゃうからanyで。解決方法ある？
     const title = `${(this as any).article.title}`;
-    const url = `https://takusan.negitoro.dev/posts/${(this as any).article.slug}`;
+    const url = `https://takusan.negitoro.dev/posts/${
+      (this as any).article.slug
+    }`;
     return {
       title: title,
       meta: [

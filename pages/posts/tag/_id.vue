@@ -17,10 +17,10 @@ export default Vue.extend({
   },
   // データ取得
   async asyncData({ $content, params }) {
-    // 正規表現で大文字小文字を無視する
-    let regex = new RegExp(params.id, "i");
     const findItem = await $content("posts")
-      .where({ tags: { $regex: regex } }) // タグが含まれているかどうか。
+      // 正規表現で大文字小文字を無視する。$optionsってのでiを入れると大文字小文字無視してくれる
+      // https://docs.mongodb.com/manual/reference/operator/query/regex/#regex-case-insensitive
+      .where({ tags: { $regex: params.id, $options: "i" } }) // タグが含まれているかどうか。
       .sortBy("created_at", "desc") // 投稿日時順に並び替える
       .fetch();
     return { findItem };

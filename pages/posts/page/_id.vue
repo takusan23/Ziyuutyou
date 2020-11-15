@@ -13,8 +13,11 @@
         :to="`/posts/page/${backTo}`"
         v-if="backButtonVisible"
         class="ma-2"
-      >前のページ</v-btn>
-      <v-btn id="next_btn" nuxt color="secondary" outlined class="ma-2">{{currentPage}}</v-btn>
+        >前のページ</v-btn
+      >
+      <v-btn id="next_btn" nuxt color="secondary" outlined class="ma-2">{{
+        currentPage
+      }}</v-btn>
       <v-btn
         id="next_btn"
         nuxt
@@ -22,7 +25,8 @@
         :to="`/posts/page/${nextTo}`"
         v-if="nextButtonVisible"
         class="ma-2"
-      >次のページ</v-btn>
+        >次のページ</v-btn
+      >
     </v-row>
   </v-app>
 </template>

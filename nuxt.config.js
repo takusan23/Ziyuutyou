@@ -124,7 +124,8 @@ export default {
     markdown: {
       prism: {
         theme: 'prism-themes/themes/prism-vsc-dark-plus.css'
-      }
+      },
+      // tocDepth: 1
     },
     fullTextSearchFields: ['title']
   },
@@ -138,6 +139,21 @@ export default {
       const { $content } = require('@nuxt/content')
       const posts = await $content('posts').only(['path']).fetch()
       return posts.map(post => post.path)
+    }
+  },
+  hooks: {
+    /**
+     * 本文を書いた際に呼ばれる。今回はここで文字数を数えている
+     */
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        // 文字数を登録する
+        const textCount = document.text.length
+        document.text_count = textCount
+        // 一覧で少しだけ記事を表示したいのでそのための
+        const description = document.text.substring(0, 100)
+        document.description = description
+      }
     }
   }
 }

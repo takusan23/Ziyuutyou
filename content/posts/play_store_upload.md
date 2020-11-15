@@ -5,7 +5,7 @@ tags:
 - Android
 - PlayConsole
 ---
-神様になった日の幼馴染かわいい。んだけど忙しいから時間がない。
+神様になった日の幼馴染かわいい。んだけど忙しいから見る時間がない。
 
 # 本題
 PlayConsoleを使い、PlayStoreへアプリを公開する方法を書きます。  
@@ -277,3 +277,6 @@ defaultConfig {
 ![Imgur](https://imgur.com/6lr58tu.png)
 
 あとは公開されるのを待つだけです。たのしみ～  
+
+# 追記
+2020年11月14日の19時33分に公開されたとPlayConsoleアプリが通知を飛ばしてきました。

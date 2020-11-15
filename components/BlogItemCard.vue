@@ -3,14 +3,21 @@
 
 <template>
   <div>
-    <v-card class="ma-2 pa-5" v-for="item in blogItems" outlined :key="item.title">
+    <v-card
+      class="ma-2 pa-5"
+      v-for="item in blogItems"
+      outlined
+      :key="item.title"
+    >
       <nuxt-link :to="`/posts/${item.slug}`">
-        <div class="headline mb-1 titleHover">{{item.title}}</div>
+        <div class="headline mb-1 titleHover">{{ item.title }}</div>
       </nuxt-link>
+      <!-- 本文チラ見せ -->
+      <div>{{ item.description }} ...</div>
       <v-divider></v-divider>
       <div class="post-meta pa-2">
         <v-icon>mdi-file-upload-outline</v-icon>
-        <time>{{ (new Date(item.created_at)).toLocaleDateString() }} 投稿</time>
+        <time>{{ new Date(item.created_at).toLocaleDateString() }} 投稿</time>
         <!-- タグ -->
         <TagGroup :tags="item.tags"></TagGroup>
       </div>
