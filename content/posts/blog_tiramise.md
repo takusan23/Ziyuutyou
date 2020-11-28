@@ -21,7 +21,7 @@ tags:
 `<nuxt-content>`にCSSで高さを決めればいいのではって思ってやったけど、なんか崩れちゃった。
 
 # Markdownそのままのがほしいんだが？
-`body`や`createAt`変数はあるけど、Markdownがそのまま入ってる変数は無い。  
+`body`や`createAt`変数はあるけど、Markdownがそのまま入ってるプロパティは無い。  
 
 以下一例。
 

@@ -125,7 +125,7 @@ export default {
       prism: {
         theme: 'prism-themes/themes/prism-vsc-dark-plus.css'
       },
-      // tocDepth: 1
+      tocDepth: 6,
     },
     fullTextSearchFields: ['title']
   },
