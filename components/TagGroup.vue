@@ -4,7 +4,7 @@
   <div>
     <v-chip
       v-for="tag in tags"
-      :to="`/posts/tag/${tag}`"
+      :to="`/posts/tag/${tag}/`"
       :key="tag"
       class="ma-1 pa-4"
       color="indigo"

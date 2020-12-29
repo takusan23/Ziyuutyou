@@ -89,6 +89,9 @@ export default {
     extend(config, ctx) {
     }
   },
+  router: {
+    trailingSlash: true
+  },
   /**
    * 書いたMarkdownのファイルをHTMLに書き出す（せいてきサイトジェネレート機能）
    */

@@ -745,6 +745,7 @@ Betaのせい？（人のせいにするな）
 
 初音ミクさん誕生日おめでとうございます。
 
+
 ### そういえば
 ```koltin
 implementation "androidx.media:media:1.1.0"

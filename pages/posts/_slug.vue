@@ -59,7 +59,7 @@ export default Vue.extend({
     const title = `${(this as any).article.title}`;
     const url = `https://takusan.negitoro.dev/posts/${
       (this as any).article.slug
-    }`;
+    }/`;
     return {
       title: title,
       meta: [

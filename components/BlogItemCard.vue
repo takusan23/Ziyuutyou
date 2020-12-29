@@ -9,7 +9,7 @@
       outlined
       :key="item.title"
     >
-      <nuxt-link :to="`/posts/${item.slug}`">
+      <nuxt-link :to="`/posts/${item.slug}/`">
         <div class="headline mb-1 titleHover">{{ item.title }}</div>
       </nuxt-link>
       <!-- 本文チラ見せ -->
