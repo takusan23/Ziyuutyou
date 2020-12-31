@@ -23,8 +23,8 @@ tags:
 
 # 既存アプリへ導入
 
-## Gradleのアップデート
-必要かどうかはわかりませんが、たしかサンプルコードいじってるときもGradleのバージョンがなんとかみたいな感じでアップデートした記憶があるので更新しておきましょう。  
+## AGPのアップデート
+必要かどうかはわかりませんが、たしかサンプルコードいじってるときもAGPのバージョンがなんとかみたいな感じでアップデートした記憶があるので更新しておきましょう。  
 家のWi-Fi遅くてつらい  
 
 多分右下にアップデートする？みたいな通知が出てると思うのでそこから
@@ -671,6 +671,12 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 ```
+
+## Caused by: java.lang.ClassNotFoundException: Composable Method ~
+
+`@Preview`のついた関数を消してそのまま実行すると出る。切り替えてあげよう
+
+![Imgur](https://imgur.com/VXetpSK.png)
 
 # ソースコード
 `Android Studio Arctic Fox | 2020.3.1 Canary 3`で動作確認済です。  
