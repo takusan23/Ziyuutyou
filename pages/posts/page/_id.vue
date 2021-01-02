@@ -22,7 +22,7 @@
         id="next_btn"
         nuxt
         color="primary"
-        :to="`/posts/page/${nextTo}`"
+        :to="`/posts/page/${nextTo}/`"
         v-if="nextButtonVisible"
         class="ma-2"
         >次のページ</v-btn

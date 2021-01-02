@@ -652,6 +652,24 @@ class MainActivity : AppCompatActivity() {
 
 ## Type 'TypeVariable(T)' has no method 'getValue(Nothing?, KProperty<*>)' and thus it cannot serve as a delegate
 
+### by remember { } じゃないもう一つの方法
+
+```kotlin
+// プロパティデリゲート とか言う書き方
+var selectTabIndex_ by remember { mutableStateOf(0) }
+// アクセス
+selectTabIndex_ = 0
+
+// 割り当て演算子
+var selectTabIndex = remember { mutableStateOf(0) }
+selectTabIndex.value = 0
+```
+
+上も下も同じことができるので、だめな場合は下の方を試してみてください。アクセスの際に`value`を付ける必要がありますが
+
+
+### else
+
 なんかコピペし直したら治った。一応使ってる`import`書いておきますね
 
 ```kotlin
