@@ -21,6 +21,29 @@ tags:
 | minSdkVersion    | 21                                                |
 
 
+# 遭遇した問題 2021/01/03 現在
+
+- Android 5でリソースが見つからないエラーでクラッシュ
+今までの方法でDrawableを取得してBitmapへ変換してComposeで扱えるBitmapへ変換すれば取れる。
+
+```kotlin
+val icon = AmbientContext.current.getDrawable(R.drawable.android)?.toBitmap()?.asImageBitmap()
+if (icon != null) {
+    Icon(
+        modifier = Modifier.padding(5.dp),
+        bitmap = icon
+    )
+}
+```
+
+- `ScrollableRow`で`AndroidView`がずれる 
+    - Android 7で観測
+    - 直し方はわからん
+
+- そもそもAndroid StudioでJDKのパスが間違ってるとか言われてビルドまで進めない
+    - `.idea`を消してみる(か適当に名前を変える)と直りました。
+
+
 # 既存アプリへ導入
 
 ## AGPのアップデート
@@ -249,46 +272,41 @@ fun TestComposePreview() {
 ![Imgur](https://imgur.com/MHExL7O.png)
 
 
-## `Button { }`以外で押せるようにしたい
-`Button { }`で囲ってあげれば押せるようになります。
+## 好きなUIにクリックイベントを置きたい（`Button { }`以外で押せるようにしたい）
+Modifierにクリックするやつがあります。`Ripple`（波みたいなやつ）もできます。
 
 ```kotlin
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TestCompose()
+            ClickableCompose()
         }
     }
 }
 
 @Composable
-fun TestCompose() {
+fun ClickableCompose() {
     // 押した回数を保持する
     var count by remember { mutableStateOf(0) }
-
-    Button(
-        onClick = {
-            // おしたとき
-            count += 1
-        },
-        colors = ButtonDefaults.textButtonColors(backgroundColor = Color.White)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .width(150.dp)
+            .height(100.dp)
+            .clickable(
+                onClick = { count++ },
+                indication = rememberRipple(color = Color.Blue),
+            )
     ) {
         Text(text = "おせますよ～ $count")
-        Image(imageVector = vectorResource(id = R.drawable.ic_expand_more_24px))
+        Image(imageVector = Icons.Outlined.Add)
     }
-}
-
-@Preview
-@Composable
-fun TestComposePreview() {
-    TestCompose()
 }
 ```
 実行結果
 
-![Imgur](https://imgur.com/P6jdWH1.png)
+![Imgur](https://imgur.com/dHQELFC.png)
 
 ## アイコンを表示 + 押せるようにする
 
@@ -695,6 +713,21 @@ import androidx.compose.ui.unit.dp
 `@Preview`のついた関数を消してそのまま実行すると出る。切り替えてあげよう
 
 ![Imgur](https://imgur.com/VXetpSK.png)
+
+
+## java.lang.NoSuchMethodError: No static method ~
+
+関数有るのに無いとか言ってくるやつ。
+
+ツールバーの`Build`から`Clean Project`を実行した後に再度実行すると直るんじゃないかな
+
+![Imgur](https://imgur.com/O8goR2b.png)
+
+## なんか真っ赤になった。Importしてもなんか別なのがImportされるんだけど？
+
+`Sync Project`したらなんかアップデートしませんか？(Android Gradle Pluginだと思われ)って聞かれたのでアプデしたらなんか治った。難しいね
+
+![Imgur](https://imgur.com/ZSiRS9T.png)
 
 # ソースコード
 `Android Studio Arctic Fox | 2020.3.1 Canary 3`で動作確認済です。  

@@ -7,7 +7,7 @@ tags:
 - JetpackCompose
 ---
 
-この続きです。
+この続きです。そのうち追記しに来る
 
 https://takusan.negitoro.dev/posts/android_jc/
 
@@ -96,8 +96,6 @@ Text(
 )
 ```
 
-ちなみに黒背景にすると`Icon()`等が勝手に検知してアイコンの色を白色に変更してくれるそうです。ダークモード対応の手間が減る
-
 ## ダークモード
 
 まずは`ThemeColor.kt`みたいな色だけを書いておくクラスを作ってはりつけ  
@@ -161,6 +159,9 @@ class MainActivity : AppCompatActivity() {
 ちゃんと動けばダークモードのときは真っ暗になると思います。AOD
 
 ![Imgur](https://imgur.com/pMaRzgc.png)
+
+ちなみに黒基調にすると`Icon()`等が勝手に検知してアイコンの色を白色に変更してくれるそうです。ダークモード対応の手間が減る
+
 
 ## タブレイアウト
 見つけたので報告しますね。そんなに難しくない。
@@ -378,6 +379,192 @@ fun DynamicThemeButtons(
 ![Imgur](https://imgur.com/cijIOts.png)
 
 ![Imgur](https://imgur.com/Xr8lRaT.png)
+
+## 表示、非表示をアニメーションしてほしい
+
+`AnimatedVisibility`ってのがあります。  
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    
+    @ExperimentalAnimationApi
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+
+            // デフォルト
+            val defaultTheme = if (isDarkMode(AmbientContext.current)) DarkColors else LightColors
+
+            // 色を保持する
+            val themes = remember { mutableStateOf(defaultTheme) }
+
+            MaterialTheme(
+                // 色の設定
+                colors = themes.value
+            ) {
+                VisibilityAnimationSample()
+            }
+        }
+    }
+}
+
+@ExperimentalAnimationApi
+@Composable
+fun VisibilityAnimationSample() {
+    // 表示するか
+    val isShow = remember { mutableStateOf(false) }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        AnimatedVisibility(visible = isShow.value) {
+            // この中に書いたやつがアニメーションされながら表示される
+            Column {
+                // 10個ぐらい
+                repeat(10) {
+                    Icon(imageVector = Icons.Outlined.Android, modifier = Modifier.rotate(90f * it))
+                }
+            }
+        }
+        // 表示、非表示切り替え
+        Button(onClick = { isShow.value = !isShow.value }) {
+            Text(text = "アニメーションさせながら表示")
+        }
+    }
+}
+```
+
+画像じゃわからんけど、ちゃんとアニメーションされてます。
+
+![Imgur](https://imgur.com/VFFCZR9.png)
+
+
+## 右寄せ
+`android:gravity="right"`をJetpack Composeでもやりたいわけですね。重要な点は`fillMaxWidth()`を使うところです
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            GravityRight()
+        }
+    }
+}
+
+@Composable
+fun GravityRight() {
+    Column {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(text = "右に寄ってる Row")
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(imageVector = Icons.Outlined.Adb)
+            }
+        }
+        Divider() // 区切り
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.End,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = "右に寄ってる Column")
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(imageVector = Icons.Outlined.Adb)
+            }
+        }
+    }
+}
+```
+
+こうなるはず
+
+![Imgur](https://imgur.com/38Uu9zz.png)
+
+
+## 均等に並べる
+`LinearLayout`と同じように`weight`を設定すればできます。
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            WeightSample()
+        }
+    }
+}
+
+@Composable
+fun WeightSample() {
+    Row(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Button(modifier = Modifier.weight(1f).padding(5.dp), onClick = { /*TODO*/ }) {
+            Text(text = "ぼたんだよー")
+        }
+        Button(modifier = Modifier.weight(1f).padding(5.dp), onClick = { /*TODO*/ }) {
+            Text(text = "ぼたんだよー")
+        }
+        Button(modifier = Modifier.weight(1f).padding(5.dp), onClick = { /*TODO*/ }) {
+            Text(text = "ぼたんだよー")
+        }
+    }
+}
+```
+
+こうなるはず
+
+![Imgur](https://imgur.com/6YRtu3S.png)
+
+## 余りのスペースを埋める
+埋めたい部品に対して`weight(1f)`を足してあげることで、他の部品の事を考えながら埋めたい部品で埋めてくれます。  
+こっちも親要素に`fillMaxWidth()`を指定してあげる必要があります。(画面いっぱい使うなら)
+
+```kotlin   
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MessageSendUI()
+        }
+    }
+}
+
+@Composable
+fun MessageSendUI() {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        val message = remember { mutableStateOf("") }
+        // この部品を最大まで広げたい
+        OutlinedTextField(
+            value = message.value,
+            onValueChange = { message.value = it },
+            modifier = Modifier
+                .padding(5.dp)
+                .weight(1f)
+        )
+        IconButton(
+            onClick = { /*TODO*/ },
+            modifier = Modifier.padding(5.dp)
+        ) {
+            Icon(imageVector = Icons.Outlined.Send)
+        }
+    }
+}
+```
+
+こうなるはず
+
+![Imgur](https://imgur.com/dcxKhg3.png)
 
 ## もっとサンプル書け！
 
