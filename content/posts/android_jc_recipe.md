@@ -7,6 +7,15 @@ tags:
 - JetpackCompose
 ---
 
+追記：`Icon`の増えてるのでコピペじゃ動かなくなりました。  
+`contentDescription`という文字列を入れる引数が増えてます。ので、コピペしたら`Icon`の引数を足してください。以下のように
+```kotlin
+Icon(
+    imageVector = Icons.Outlined.Home,
+    contentDescription = "アイコンの説明。なければnullでもいい"
+)
+```
+
 この続きです。そのうち追記しに来る
 
 https://takusan.negitoro.dev/posts/android_jc/
