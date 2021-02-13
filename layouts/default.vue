@@ -94,11 +94,11 @@ export default {
       items: [
         {
           icon: "mdi-home-outline",
-          title: "トップページ（なにに使うかは未定）",
+          title: "トップページ",
           to: "/",
         },
         {
-          icon: "mdi-format-list-checkbox",
+          icon: "mdi-book-edit-outline",
           title: "記事一覧",
           to: "/posts/page/1/",
         },
