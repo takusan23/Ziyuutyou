@@ -1,4 +1,4 @@
-つくったものなど
+// つくったものなど
 
 <template>
   <div align="center" class="apps">
@@ -6,7 +6,7 @@
 
     <div class="apps_flex">
       <!-- 作ったもの メニュー -->
-      <v-list dense color="transparent" nav min-width="100px">
+      <v-list dense color="transparent" nav class="apps_list">
         <v-list-item-group v-model="menuListSelectPos">
           <v-list-item
             link
@@ -23,40 +23,38 @@
       </v-list>
 
       <!-- 作ったもの 中身を表示する部分 -->
-      <v-main>
-        <v-container fluid>
-          <!-- 作ったもの-->
-          <v-card
-            class="ma-2 pa-2"
-            v-for="app in makeAppList"
-            v-bind:key="app.title"
-            outlined
-          >
-            <v-card-title>{{ app.title }}</v-card-title>
-            <v-card-text> {{ app.description }} </v-card-text>
-            <v-card-actions>
-              <v-row justify="end">
-                <v-btn
-                  text
-                  class="ma-1 pa-1"
-                  rel="noreferrer"
-                  target="_blank"
-                  :href="app.link"
-                  >リンク</v-btn
-                >
-                <v-btn
-                  text
-                  class="ma-1 pa-1"
-                  rel="noreferrer"
-                  target="_blank"
-                  :href="app.source_code"
-                  >ソースコード</v-btn
-                >
-              </v-row>
-            </v-card-actions>
-          </v-card>
-        </v-container>
-      </v-main>
+      <!-- 作ったもの-->
+      <v-container>
+        <v-card
+          class="ma-2 pa-2"
+          v-for="app in makeAppList"
+          v-bind:key="app.title"
+          outlined
+        >
+          <v-card-title>{{ app.title }}</v-card-title>
+          <v-card-text> {{ app.description }} </v-card-text>
+          <v-card-actions>
+            <v-row justify="end">
+              <v-btn
+                text
+                class="ma-1 pa-1"
+                rel="noreferrer"
+                target="_blank"
+                :href="app.link"
+                >リンク</v-btn
+              >
+              <v-btn
+                text
+                class="ma-1 pa-1"
+                rel="noreferrer"
+                target="_blank"
+                :href="app.source_code"
+                >ソースコード</v-btn
+              >
+            </v-row>
+          </v-card-actions>
+        </v-card>
+      </v-container>
     </div>
   </div>
 </template>
@@ -71,8 +69,11 @@
 .apps_flex {
   display: flex;
 }
-.apps_list {
-  display: none;
+/* スマホのときはメニューのところをアイコンだけにする */
+@media only screen and (max-width: 750px) {
+  .apps_list {
+    width: 56px;
+  }
 }
 </style>
 

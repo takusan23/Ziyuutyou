@@ -19,7 +19,10 @@
             <v-list-item-title>{{ drawerTitle }}</v-list-item-title>
             <v-list-item-subtitle>
               <v-icon color="indigo">mdi-book</v-icon>
-              <a href="https://takusan23.github.io/Bibouroku/" target="_blank"
+              <a
+                href="https://takusan23.github.io/Bibouroku/"
+                target="_blank"
+                ref="noreferrer"
                 >前のブログ</a
               >
             </v-list-item-subtitle>
@@ -39,13 +42,7 @@
       <v-divider></v-divider>
       <!-- メニュー -->
       <v-list nav>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -64,11 +61,7 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <!-- タイトル -->
-      <v-toolbar-title
-        v-show="!drawer"
-        id="title"
-        v-text="this.$store.state.barTitle"
-      />
+      <v-toolbar-title v-show="!drawer" id="title" v-text="this.$store.state.barTitle" />
       <v-spacer />
     </v-app-bar>
 
@@ -126,18 +119,14 @@ export default {
 
     // 起動時判断
     // Vuetify切り替える
-    this.$vuetify.theme.dark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
+    this.$vuetify.theme.dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     // リアルタイム監視。Androidだと動かなかった
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const isDeviceDarkModeEnabled = e.matches;
-        // Vuetify切り替える
-        this.$vuetify.theme.dark = isDeviceDarkModeEnabled;
-      });
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      const isDeviceDarkModeEnabled = e.matches;
+      // Vuetify切り替える
+      this.$vuetify.theme.dark = isDeviceDarkModeEnabled;
+    });
   },
   watch: {},
 };
