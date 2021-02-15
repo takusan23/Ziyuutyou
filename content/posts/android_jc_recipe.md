@@ -12,20 +12,21 @@ tags:
 - `vectorResource`が非推奨。`painterResource`を使うように。
     - よって`Icon`へDrawableを渡すときの引数は`imageVector`ではなく、`painter`になります。
 
-```
+```kotlin
 Icon(
     imageVector = painterResource(R.drawable.ic_outline_open_in_browser_24px),
-    contentDescription = tabName
+    contentDescription = "ブラウザ起動"
 )	
 ```
 
 - Context取得時に使う、`AmbientContext.current`が`LocalContext.current`に変更になりました。
 
 - Android Studioが対応してないのか、Kotlinのバージョンを1.4.30にしても、**バージョンが古いので利用できません**ってIDEに言われます。 
+    -  **エラー出るけど実行はできる。修正待ち**
     - `'padding(Dp): Modifier' is only available since Kotlin 1.4.30 and cannot be used in Kotlin 1.4`
     - 解決方法は、設定を開き、`Languages & Frameworks`へ進み、`Kotlin`を選び、`Update Channel`を`Early Access Preview 1.4.x`にして`Install`を押せばいいらしい。
-        - エラー出るけど実行はできる。修正待ち
         - ここらへん参照：https://github.com/android/compose-samples/pull/387#issuecomment-777515590
+
 
 追記：`Icon`の増えてるのでコピペじゃ動かなくなりました。  
 `contentDescription`という文字列を入れる引数が増えてます。ので、コピペしたら`Icon`の引数を足してください。以下のように
