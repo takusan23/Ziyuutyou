@@ -14,7 +14,7 @@ tags:
 
 ```kotlin
 Icon(
-    imageVector = painterResource(R.drawable.ic_outline_open_in_browser_24px),
+    painter = painterResource(R.drawable.ic_outline_open_in_browser_24px),
     contentDescription = "ブラウザ起動"
 )	
 ```
