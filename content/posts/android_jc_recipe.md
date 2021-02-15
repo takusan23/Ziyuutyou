@@ -7,6 +7,26 @@ tags:
 - JetpackCompose
 ---
 
+追記 2021/02/15：Jetpack Composeのバージョンが`alpha 12`になりました。  
+影響があったといえば、  
+- `vectorResource`が非推奨。`painterResource`を使うように。
+    - よって`Icon`へDrawableを渡すときの引数は`imageVector`ではなく、`painter`になります。
+
+```
+Icon(
+    imageVector = painterResource(R.drawable.ic_outline_open_in_browser_24px),
+    contentDescription = tabName
+)	
+```
+
+- Context取得時に使う、`AmbientContext.current`が`LocalContext.current`に変更になりました。
+
+- Android Studioが対応してないのか、Kotlinのバージョンを1.4.30にしても、**バージョンが古いので利用できません**ってIDEに言われます。 
+    - `'padding(Dp): Modifier' is only available since Kotlin 1.4.30 and cannot be used in Kotlin 1.4`
+    - 解決方法は、設定を開き、`Languages & Frameworks`へ進み、`Kotlin`を選び、`Update Channel`を`Early Access Preview 1.4.x`にして`Install`を押せばいいらしい。
+        - エラー出るけど実行はできる。修正待ち
+        - ここらへん参照：https://github.com/android/compose-samples/pull/387#issuecomment-777515590
+
 追記：`Icon`の増えてるのでコピペじゃ動かなくなりました。  
 `contentDescription`という文字列を入れる引数が増えてます。ので、コピペしたら`Icon`の引数を足してください。以下のように
 ```kotlin
@@ -77,12 +97,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
 参考にしました：https://gist.github.com/gildor/82ec960cc0c5873453f024870495eab3
 
 ## Context取得
-リソース取得等は用意されてるけど、それ以外でContentを使いたい場合はこうです！
+リソース取得等は用意されてるけど、それ以外でContextを使いたい場合はこうです！
 
 ```kotlin
 @Composable
 fun needContext() {
-    val context = AmbientContext.current
+    val context = LocalContext.current
 }
 ```
 
