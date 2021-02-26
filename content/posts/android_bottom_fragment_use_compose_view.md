@@ -137,3 +137,6 @@ dependencyResolutionManagement ってなに
 あとソースコード置いておきます  
 
 https://github.com/takusan23/BottomFragmentComposeView
+
+# 参考にしました
+https://issuetracker.google.com/issues/180691023
