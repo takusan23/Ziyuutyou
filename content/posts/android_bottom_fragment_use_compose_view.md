@@ -84,7 +84,7 @@ private fun showDialog() {
 ```
 
 ## Fragmentをスナップショット版にする
-ついさっき知ったんですけど、`build.gradle`から`allrepositoryes`が消滅してた。(build.gradleが6.8になった影響)  
+ついさっき知ったんですけど、`build.gradle`から`allprojects`が消滅してた。(build.gradleが6.8になった影響)  
 代替として、`settings.gradle`に`dependencyResolutionManagement`が追加された模様  
 
 
