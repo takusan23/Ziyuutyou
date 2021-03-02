@@ -7,6 +7,8 @@ tags:
 - JetpackCompose
 ---
 
+追記 2021/03/02: Jetpack Compose Beta がリリースされました！。ついに（待望の）ベータ版になります
+
 追記 2021/02/15：Jetpack Composeのバージョンが`alpha 12`になりました。  
 影響があったといえば、  
 - `vectorResource`が非推奨。`painterResource`を使うように。
