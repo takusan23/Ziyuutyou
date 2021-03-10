@@ -7,7 +7,7 @@ tags:
 - GitHub
 ---
 
-自分用メモ
+自分用メモ（記事更新：2021/03/11）
 
 # ライブラリ作成
 ## 適当なプロジェクトを作成します。
@@ -41,32 +41,8 @@ dependencies {
 となります。
 
 # JitPackで公開する流れ
-## build.gradleに書き足す
-ここで言ってる`build.gradle`は、appフォルダでもない、ライブラリ名のついたフォルダでもない、`build.gradle`のことです。  
-開いてみて、以下と明らかに中身が違う場合は開くの間違ってます。
-```gradle
-buildscript {
-    ext.kotlin_version = "1.4.10"
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        // JitPack公開で使う
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1' // Add this line
-    }
-}
-```
-開けたら、上のように`dependencies{ }`の中に書き足します。
-
-```gradle
-// JitPack公開で使う
-classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1' // Add this line
-```
-
-今度は、`ライブラリ名/build.gradle`（ライブラリ名のフォルダに有るbuild.gradle）を開いて、上の部分を書き換えます。
+## library/build.gradle
+`ライブラリ名/build.gradle`（ライブラリ名のフォルダに有るbuild.gradle）を開いて、上の部分を書き換えます。
 
 ```gradle
 plugins {
@@ -74,7 +50,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     // JitPackで必要
-    id 'com.github.dcendents.android-maven'
+    id 'maven-publish'
 }
 
 // これもJitPackで使う
@@ -83,7 +59,36 @@ group = 'com.github.takusan23'
 
 `takusan23`の部分は各自違うと思う。
 
-あとなんかいつの間にか、`apply plugin`が、`plugins`に変わっててよくわからなくなったけど、多分`id なんとか`みたいな感じで足していけばいいと思う。
+それから、一番下に行って数行書き足す必要があるみたいです。
+
+```kotlin
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.takusan23'
+                artifactId = 'ComposeOrigamiLayout'
+                version = '1.0'
+            }
+        }
+    }
+}
+```
+
+`groupId`は`group`と同じでいいと思う。  
+`artifactId`にはGitHubのリポジトリ名を入れてね。
+ 
+## jitpack.yml
+ってファイルを作成します。場所はsrcフォルダとか.ideaフォルダがあるところです。  
+ファイル名は`jitpack.yml`で。  
+
+中身なんですけど、Javaのバージョンを指定します。なんかJava11が必要になったみたい。
+
+```yml
+jdk:
+  - openjdk11
+```
 
 # 他の人に使ってもらう
 ## build.gradle
@@ -95,6 +100,20 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+`allprojects{ repositories{ } }`がない場合は、`settings.gradle`を開いてこうです。  
+
+```gradle
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://jitpack.io' } // これ
     }
 }
 ```
