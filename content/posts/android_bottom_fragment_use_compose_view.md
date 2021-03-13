@@ -6,7 +6,45 @@ tags:
 - Kotlin
 ---
 
-`alpha 12`から直ってない
+~~`alpha 12`から直ってない~~  
+ `beta02`で修正されました。更新手順は、  
+`app/build.gradle`のKotlinバージョン、Composeのバージョンを以下のように変更し、
+
+```gradle
+// Compose関係
+composeOptions {
+    kotlinCompilerVersion '1.4.31'
+    kotlinCompilerExtensionVersion '1.0.0-beta02'
+}
+```
+
+Composeのバージョンを上げて、  
+`Fragment`、`AppCompat`のバージョンを`1.3`以上にすればこの問題は修正できます。
+
+```gradle
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "androidx.compose.ui:ui:1.0.0-beta02"
+    // Tooling support (Previews, etc.)
+    implementation "androidx.compose.ui:ui-tooling:1.0.0-beta02"
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation "androidx.compose.foundation:foundation:1.0.0-beta02"
+    // Material Design
+    implementation "androidx.compose.material:material:1.0.0-beta02"
+    // Integration with observables
+    implementation "androidx.compose.runtime:runtime-livedata:1.0.0-beta02"
+    // LayoutInspector
+    implementation "androidx.compose.ui:ui-tooling:1.0.0-beta02"
+
+    // fragment
+    implementation 'androidx.fragment:fragment-ktx:1.3.1'
+
+    // appcompat
+    implementation 'androidx.appcompat:appcompat:1.3.0-beta01'
+
+}
+```
 
 # 本題
 `BottomSheetDialogFragment`の`onCreateView`の返り値として`ComposeView()`を使うとエラーが出る問題

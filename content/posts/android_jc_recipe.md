@@ -7,6 +7,27 @@ tags:
 - JetpackCompose
 ---
 
+追記：2021/03/13：Beta02がリリースされました。一緒にKotlinのバージョンを`1.4.31`にする必要があります。  
+`ComposeView`の問題が修正されました（多分）。
+
+(なお今度はスクロール時に`AndroidView()`がずれるようになった模様)
+
+```gradle
+composeOptions {
+    kotlinCompilerVersion '1.4.31'
+    kotlinCompilerExtensionVersion '1.0.0-beta02'
+}
+```
+
+また、`AppCompat`、`Fragment`のライブラリのバージョンをそれぞれ`1.3`以上にする必要があります。  
+
+```gradle
+dependencies {
+    implementation 'androidx.fragment:fragment-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.3.0-beta01'
+}
+```
+
 追記 2021/03/02: Jetpack Compose Beta がリリースされました！。ついに（待望の）ベータ版になります
 
 追記 2021/02/15：Jetpack Composeのバージョンが`alpha 12`になりました。  
