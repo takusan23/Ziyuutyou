@@ -36,9 +36,9 @@ if (icon != null) {
 }
 ```
 
-- `ScrollableRow`で`AndroidView`がずれる 
-    - Android 7で観測
-    - 直し方はわからん
+- ~~`ScrollableRow`で`AndroidView`がずれる~~ **Beta03で修正されました。**
+    - Android 7以前で観測
+    - ~~直し方はわからん~~**Beta03に上げればおｋ(Kotlinは1.4.31)**
 
 - そもそもAndroid StudioでJDKのパスが間違ってるとか言われてビルドまで進めない
     - `.idea`を消してみる(か適当に名前を変える)と直りました。
