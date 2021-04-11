@@ -7,6 +7,15 @@ tags:
 - JetpackCompose
 ---
 
+追記：2021/04/11：Beta04がリリースされました。多分Kotlinのバージョンを上げる必要があります。
+
+```
+composeOptions {
+    kotlinCompilerVersion '1.4.32'
+    kotlinCompilerExtensionVersion '1.0.0-beta04'
+}
+```
+
 追記：2021/03/25：Beta03がリリースされました。`AndroidView`の問題が修正されています。  
 ついでに、Android 7以前？で起きてたスクロール時に`AndroidView`がずれる問題も直ってました。
 
