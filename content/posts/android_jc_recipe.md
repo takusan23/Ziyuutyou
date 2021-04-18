@@ -147,6 +147,7 @@ fun needContext() {
 なんかコルーチン、2種類あるっぽい。  
 
 ### LaunchedEffect vs rememberCoroutineScope
+なんか警告出てたので追記（2021/04/19）
 
 ### LaunchedEffect
 
@@ -207,8 +208,8 @@ fun TimerText() {
 ```
 
 ### rememberCoroutineScope
-じゃあ`rememberCoroutineScope`はなんだよって話ですが、これは`Composable`な関数の中だけど、ボタンを押したときのコールバック等で使うのが正解らしいです。  
-(`Composable`な関数の中だけど、`Button()`等が設置できない場所？)
+じゃあ`rememberCoroutineScope`はなんだよって話ですが、これは`Composable`な関数ではないところで使うのが正解らしいです。  
+(例えば、ボタンを押したときに呼ばれる関数は`Composableな関数`ではない)
 
 ```kotlin
 @Composable
