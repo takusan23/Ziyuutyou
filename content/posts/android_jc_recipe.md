@@ -144,12 +144,99 @@ fun needContext() {
 
 ## コルーチンは？
 
-```kotlin
-val scope = rememberCoroutineScope()
-scope.launch {
+なんかコルーチン、2種類あるっぽい。  
 
+### LaunchedEffect vs rememberCoroutineScope
+
+### LaunchedEffect
+
+これは`@Composable`がついた関数内でしか呼べません。  
+`Button()`や`Text()`を置く感じで使うことになります。
+
+```kotlin
+@Composable
+fun TimerText() {
+    val timerCount = remember { mutableStateOf(0) }
+    /**
+     * ここはコンポーザブルのスコープ内
+     *
+     * Button()やText()が設置可能
+     * */
+    LaunchedEffect(key1 = Unit, block = {
+        while (true) {
+            timerCount.value += 1
+            delay(1000)
+        }
+    })
+    Text(text = "${timerCount.value} 秒経過")
+}
+
+```
+
+また、`key1`の中身が変わると、今のコルーチンはキャンセルされ、新しいコルーチンが起動するようになっています。
+
+```kotlin
+@Composable
+fun TimerText() {
+    val timerCount = remember { mutableStateOf(0) }
+    val isRunning = remember { mutableStateOf(false) }
+    /**
+     * Button()やText()が設置可能な場所
+     *
+     * Composable内で利用できるコルーチン
+     *
+     * key1が変更されると、既存のコルーチンはキャンセルされ、新しくコルーチンが起動する
+     * */
+    LaunchedEffect(key1 = isRunning.value, block = {
+        timerCount.value = 0
+        while (isRunning.value) {
+            timerCount.value += 1
+            delay(1000)
+        }
+    })
+    Button(onClick = {
+        isRunning.value = !isRunning.value
+    }) {
+        if (isRunning.value) {
+            Text(text = "${timerCount.value} 秒経過")
+        } else {
+            Text(text = "タイマー開始")
+        }
+    }
 }
 ```
+
+### rememberCoroutineScope
+じゃあ`rememberCoroutineScope`はなんだよって話ですが、これは`Composable`な関数の中だけど、ボタンを押したときのコールバック等で使うのが正解らしいです。  
+(`Composable`な関数の中だけど、`Button()`等が設置できない場所？)
+
+```kotlin
+@Composable
+fun RememberCoroutine() {
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+
+    Button(onClick = {
+        // ここはComposableな関数ではない
+        scope.launch {
+            // Toast表示が終わるまで一時停止する
+            suspendToast(context)
+            println("終了")
+        }
+    }) {
+        Text(text = "rememberCoroutineScope")
+    }
+}
+
+/** Toast表示が終わるまで一時停止する関数 */
+suspend fun suspendToast(context: Context) {
+    Toast.makeText(context, "rememberCoroutineScope", Toast.LENGTH_SHORT).show()
+    delay(2 * 1000) // 2秒ぐらい
+}
+```
+
+あってるか分からないので、詳しくは公式で  
+https://developer.android.com/jetpack/compose/lifecycle
 
 ## テーマとか文字の色にカラーコードを使いたい！
 `Color.parseColor()`がそのままでは使えないので、`androidx.compose.ui.graphics`の方の`Color`の引数に入れてあげます。
@@ -164,7 +251,22 @@ Text(
 ## ダークモード
 
 まずは`ThemeColor.kt`みたいな色だけを書いておくクラスを作ってはりつけ  
-なんか`isDarkMode`に`@Composable`を付ける理由はわかりません。サンプルコードがそうなってたので便乗
+~~なんか`isDarkMode`に`@Composable`を付ける理由はわかりません。サンプルコードがそうなってたので便乗~~  
+`@Composable`をつけると`LocalContext`等へアクセスできる。  
+つけない場合だと(今回の場合は)引数に`Context`が必要になる。なるほどなあ
+
+```kotlin
+// 引数にContextが必要
+fun isDarkMode(context: Context) {}
+
+// いらない
+@Composable
+fun isDarkMode() {
+    val context = LocalContext.current
+}
+```
+
+ここから例です
 
 ```kotlin
 /**
@@ -186,7 +288,10 @@ val LightColors = lightColors(
 
 /** ダークモードかどうか */
 @Composable
-fun isDarkMode(context: Context): Boolean {
+fun isDarkMode(): Boolean {
+    // ComposableをつけるとLocalContext等、Composable内でしか呼べない関数を呼べる（それはそう）
+    // 今回はContextを引数に取らなくてもLocalContextを使うことが出来た
+    val context = LocalContext.current
     val conf = context.resources.configuration
     val nightMode = conf.uiMode and Configuration.UI_MODE_NIGHT_MASK
     return nightMode == Configuration.UI_MODE_NIGHT_YES // ダークモードなら true
