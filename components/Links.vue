@@ -4,7 +4,7 @@
   <div align="center" class="links">
     <h1 class="link_title">リンク</h1>
     <v-chip outlined class="ma-2 pa-2" v-for="link in links" v-bind:key="link.name">
-      <v-icon>{{ link.icon }}</v-icon>
+      <v-icon class="ma-1">{{ link.icon }}</v-icon>
       <a :href="link.address" rel="">{{ link.name }}</a>
     </v-chip>
   </div>
@@ -46,6 +46,11 @@ export default Vue.extend({
         name: "GitHub",
         icon: "mdi-github",
         address: "https://github.com/takusan23",
+      },
+      {
+        name: "takusan_0913@yahoo.co.jp",
+        icon: "mdi-card-account-mail-outline",
+        address: "mailto:takusan_0913@yahoo.co.jp",
       },
       {
         name: "このページのソースコード",
