@@ -15,10 +15,10 @@ tags:
 
 # 環境
 
-| なまえ           | あたい                                            |
-|------------------|---------------------------------------------------|
+| なまえ           | あたい                                          |
+|------------------|-------------------------------------------------|
 | `Android Studio` | `Android Studio Arctic Fox \ 2020.3.1 Canary 3` |
-| minSdkVersion    | 21                                                |
+| minSdkVersion    | 21                                              |
 
 
 # 遭遇した問題 2021/01/03 現在
@@ -299,6 +299,7 @@ fun ClickableCompose() {
             .clickable(
                 onClick = { count++ },
                 indication = rememberRipple(color = Color.Blue),
+                interactionSource = remember { MutableInteractionSource() },
             )
     ) {
         Text(text = "おせますよ～ $count")
