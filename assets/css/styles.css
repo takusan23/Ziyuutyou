@@ -48,6 +48,11 @@ pre {
     font-weight: initial !important;
 }
 
+/* pre要素内にあるcodeのBackgroundはいらない */
+pre code {
+    background-color: initial !important;
+}
+
 .hljs {
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important;
 }

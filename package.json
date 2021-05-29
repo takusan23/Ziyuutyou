@@ -20,7 +20,7 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/sitemap": "^2.4.0",
     "lodash": "^4.17.19",
-    "nuxt": "^2.15.4",
+    "nuxt": "^2.15.6",
     "prism-themes": "^1.4.0",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"

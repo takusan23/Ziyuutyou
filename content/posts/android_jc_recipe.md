@@ -7,6 +7,17 @@ tags:
 - JetpackCompose
 ---
 
+追記：2021/05/22：Jetpack Composeがいつの間にかbeta07まで進んでました。  
+あとGoogle I/Oで言ってたけどホーム画面のウイジェットもJetpack Composeで書けるようになるとかなんとか
+
+```
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+```
+
 追記：2021/04/11：Beta04がリリースされました。多分Kotlinのバージョンを上げる必要があります。
 
 ```
