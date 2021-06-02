@@ -22,8 +22,9 @@
     "lodash": "^4.17.19",
     "nuxt": "^2.15.6",
     "prism-themes": "^1.4.0",
-    "vue": "^2.6.12",
-    "vue-template-compiler": "^2.6.12"
+    "vue": "^2.6.13",
+    "vue-server-renderer": "^2.6.13",
+    "vue-template-compiler": "^2.6.13"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
