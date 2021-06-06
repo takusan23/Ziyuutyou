@@ -7,16 +7,53 @@ tags:
 - JetpackCompose
 ---
 
-追記：2021/05/22：Jetpack Composeがいつの間にかbeta07まで進んでました。  
-あとGoogle I/Oで言ってたけどホーム画面のウイジェットもJetpack Composeで書けるようになるとかなんとか
+追記：2021/06/06：知らん間にJetpack Compose Beta08がリリースされました。Kotlinのバージョンを1.5.10にする必要があります。
 
 ```
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+composeOptions {
+    kotlinCompilerVersion '1.5.10'
+    kotlinCompilerExtensionVersion '1.0.0-beta08'
 }
 ```
+
+あと `Compose版マテリアルデザインライブラリ` のリファレンスが親切になっていました。Google本気やん
+https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#overview
+
+
+【割と破壊的仕様変更】`beta08`から`Surface()`と`Card()`のクリックイベントは`Modifier`経由ではなく、`onClick`の引数を使うようになりました。
+
+- beta07まで    
+```kotlin
+Surface(modifier = Modifier.clickable {  }) {
+
+}
+```
+
+- beta08以降
+```kotlin
+Surface(onClick = { }) {
+
+}
+```
+
+そして`Surface()`、`Card()`で`onClick`引数を使う際は、`@ExperimentalMaterialApi`をComposeな関数に付ける必要があります。
+
+```kotlin
+@ExperimentalMaterialApi
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    setContent {
+        Surface(onClick = { }) {
+        
+        }    
+    }
+
+}
+```
+
+追記：2021/05/22：Jetpack Composeがいつの間にかbeta07まで進んでました。  
+あとGoogle I/Oで言ってたけどホーム画面のウイジェットもJetpack Composeで書けるようになるとかなんとか
 
 追記：2021/04/11：Beta04がリリースされました。多分Kotlinのバージョンを上げる必要があります。
 
