@@ -126,7 +126,7 @@ IDEAのスタート画面から、`Get from VCS`を押して、いかのURLを�
 
 | なまえ             | あたい                                                                     |
 |--------------------|----------------------------------------------------------------------------|
-| maven_group        | 自分の持ってるドメイン。持ってないならGithub Pagesとか他とかぶらない文字列 |
+| maven_group        | 自分の持ってるドメインを逆から。持ってないならGithub Pagesとか他とかぶらない文字列 |
 | archives_base_name | MODのID（小文字）                                                          |
 
 私ならこんな感じ？
@@ -143,9 +143,13 @@ fabric_version=0.34.10+1.17
 	archives_base_name = clickmanaita
 ```
 
+また、`fabric_version`等は、以下のサイトから更新があるか確認できるので見てみるといいと思います。  
+
+https://fabricmc.net/versions.html
+
 # Javaのパッケージ名修正
 IDEAのProject(ファイルが表示されてるところ)から`net.fabricmc.example`を選択状態にして、`Shift押しながらF6を押します`。  
-押したら`Rename Package`を選び、ドメイン名+MOD名小文字 を入力します
+押したら`Rename Package`を選び、ドメイン名(逆から)+MOD名小文字 を入力します
 
 ![Imgur](https://imgur.com/JAPuJUz.png)
 
@@ -171,7 +175,7 @@ IDEAのProject(ファイルが表示されてるところ)から`net.fabricmc.ex
   "id": "clickmanaita",
 ```
 
-`ドメイン`.`MODのID`.`ExampleMod.ktだったファイル名`Kt::init
+`ドメイン(逆から)`.`MODのID`.`ExampleMod.ktだったファイル名`Kt::init
 
 **クラス名+Kt**、Ktを付けないとダメっぽい。
 
@@ -362,6 +366,39 @@ object ClickManaitaItem {
 増えます。まだチェストの中身とかは増えないのでまだまだって感じですかね。
 
 ![Imgur](https://imgur.com/xsXFHrp.png)
+
+# ソースを読めるようにする
+Minecraftのソースを読めるようにします。IDEAには逆コンパイラーが搭載されているのでなくても最悪いいですが、検索機能が使えないのでソースを生成しといたほうがいいと思います。
+
+IDEAの`Gradle`を押して、`Tasks` > `fabric` > `genSources` をダブルクリックすることで生成されます。
+
+![Imgur](https://imgur.com/U0U2TCL.png)
+
+その後、適当にBlockクラスとかを参照した際に、上に出てくる`Choose Sources...`を押して、`なんとか-sources.jar`を選択することで生成したソースを読むことができるようになります。
+
+![Imgur](https://imgur.com/qHRSVnB.png)
+
+`Shift`+`Ctrl`+`F`の検索機能も開放されました。
+
+![Imgur](https://imgur.com/PCDBcwG.png)
+
+# 配布可能ファイルを生成する
+
+IDEA右上の`Gradle`から、`Tasks`>`build`へ進み`build`を選択することで配布可能なJarファイルを生成します。  
+成功すると、`build/libs/`に生成したファイルが有るはずです。（dev、sources、sources-dev じゃない方）  
+あとはこのJarファイルをCurseForgeとかで公開すればいいんじゃない？
+
+![Imgur](https://imgur.com/6J6OyJb.png)
+
+# エンドユーザー向けの説明とか
+このModは`Fabric`導入後、`mods`フォルダに以下のファイルをダウンロードして放り込んでおく必要があります。
+
+- Fabric API
+  - https://www.curseforge.com/minecraft/mc-mods/fabric-api/files
+- Fabric Language Kotlin
+  - Kotlinという言語で書かれたため、他のMODと違い必要になる。
+  - https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin/files
+- Mod本体
 
 # ソースコード
 ソースコードです。  

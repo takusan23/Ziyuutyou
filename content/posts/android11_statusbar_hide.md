@@ -15,10 +15,10 @@ Activityを全画面にしたり、ステータスバー、ナビゲーション
 
 # 環境
 
-|なまえ|あたい|
-|---|---|
-|端末|Pixel 3 XL|
-|Android|11 Beta 1|
+| なまえ  | あたい     |
+|---------|------------|
+| 端末    | Pixel 3 XL |
+| Android | 11 Beta 1  |
 
 # 非表示の種類
 - **スワイプすることで一時的にはステータスバー、ナビゲーションバーが表示され、数秒操作しないとまた自動で全画面に戻る**
@@ -28,19 +28,42 @@ Activityを全画面にしたり、ステータスバー、ナビゲーション
     - どこで使ってるかはわからんな
     - `WindowInsetsController.BEHAVIOR_SHOW_BARS_BY_SWIPE`を使う（後述）
 
+# 追記
+Android 6 以降ならAndroidX(`androix.`から始まるパッケージ、クラスの最後に`Compat`がつく)によるバックポートがあるのでそれを使えばいいと思います。  
+`WindowInsetsController`もAndroid 11から追加されたAPIですが、`AndroidX`(旧称：サポートライブラリ)を利用することでAndroid 6から対応することができます。
+
+```kotlin
+/**
+ * キーボードを非表示にする。
+ *
+ * IMEで思い出した。XperiaのPOBox Plus返して。あれ使いやすかったのに
+ *
+ * @param activity Activity
+ * */
+fun hideKeyboard(activity: Activity) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val insetsControllerCompat = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
+        insetsControllerCompat.hide(WindowInsetsCompat.Type.ime())
+    }
+}
+```
+
 # つくる
 
 スワイプすると一時的に表示される方  
 一時的に表示しているバーは半透明になっている。
 
 ```kotlin
+supportActionBar?.hide()
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+    // ステータスバーの後ろにViewを潜らせるならこれも
+    window?.setDecorFitsSystemWindows(false)
     // Android 11 以上と分岐
     window?.insetsController?.apply {
-        // スワイプで一時的に表示可能
-        systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         // StatusBar + NavigationBar 非表示
         hide(WindowInsets.Type.systemBars())
+        // スワイプで一時的に表示可能
+        systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         // ノッチにも侵略
         window?.attributes?.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
     }
