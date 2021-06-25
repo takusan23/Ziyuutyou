@@ -6,6 +6,44 @@ tags:
 - Kotlin
 - JetpackCompose
 ---
+追記：2021/06/26：Beta09が出てます。  
+それと、現状？AndroidStudioのテンプレートからEmpty Compose Activityを選択してそのままの状態で実行すると起動しません。KotlinとJetpackComposeのバージョンを上げる必要があります。初見殺しだろこれ
+
+```
+java.lang.NoSuchMethodError: No static method copy-H99Ercs$default
+```
+
+`build.gradle`(appフォルダではない方)
+
+```kotlin
+buildscript {
+    ext {
+        compose_version = '1.0.0-beta09' // beta09へ
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.0-beta04"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10" // 1.5.10へ
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+```
+
+`app/build.gradle`(appフォルダの方のbuild.gradle)
+
+```gradle
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion '1.5.10' // 1.5.10へ
+    }
+```
+
+これで実行できると思います。
 
 追記：2021/06/06：知らん間にJetpack Compose Beta08がリリースされました。Kotlinのバージョンを1.5.10にする必要があります。
 

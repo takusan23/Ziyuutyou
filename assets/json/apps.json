@@ -26,7 +26,7 @@
     "minecraft": [
         {
             "title": "ClickManaita",
-            "description": "チートMOD。1.12.2 / 1.16.4",
+            "description": "チートMOD。1.12.2 / 1.16.x / Fabric 1.17",
             "link": "https://www.curseforge.com/minecraft/mc-mods/clickmanaita",
             "source_code": "https://github.com/takusan23/ClickManaita2"
         }
