@@ -7,9 +7,7 @@
       <!-- 投稿日 -->
       <v-col class="post-meta pa-1">
         <v-icon>mdi-file-upload-outline</v-icon>
-        <time
-          >{{ new Date(article.created_at).toLocaleDateString() }} 投稿</time
-        >
+        <time>{{ new Date(article.created_at).toLocaleDateString() }} 投稿</time>
       </v-col>
       <!-- 文字数。nuxt.config.js参照 -->
       <v-col class="post-meta pa-1">
@@ -28,8 +26,10 @@
     <div id="count"></div>
     <v-divider></v-divider>
     <!-- 共有 -->
-    <v-card-actions>
-      <v-row align="center" justify="end">
+    <v-card-actions class="ma-2">
+      <v-row align="center">
+        <HistoryButton :slug="article.slug"></HistoryButton>
+        <v-spacer></v-spacer>
         <MastodonShare></MastodonShare>
       </v-row>
     </v-card-actions>
@@ -40,6 +40,7 @@
 import Vue from "vue";
 import TagGroup from "@/components/TagGroup.vue";
 import MastodonShare from "@/components/MastodonShare.vue";
+import HistoryButton from "@/components/HistoryButton.vue";
 
 export default Vue.extend({
   // データ取得
@@ -51,15 +52,14 @@ export default Vue.extend({
   components: {
     TagGroup,
     MastodonShare,
+    HistoryButton,
   },
   data: () => ({}),
   // タイトル変更に使う
   head() {
     // エラーでちゃうからanyで。解決方法ある？
     const title = `${(this as any).article.title}`;
-    const url = `https://takusan.negitoro.dev/posts/${
-      (this as any).article.slug
-    }/`;
+    const url = `https://takusan.negitoro.dev/posts/${(this as any).article.slug}/`;
     return {
       title: title,
       meta: [
