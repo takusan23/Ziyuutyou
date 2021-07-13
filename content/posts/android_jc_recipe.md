@@ -6,6 +6,17 @@ tags:
 - Kotlin
 - JetpackCompose
 ---
+追記：2021/07/14：1.0.0-rc01が出てます。
+正式リリースも近い。あとなんかAndroid Studioのプレビュー機能が4んでるみたいだから、`ui-tooling`だけは`Beta09`のままがいいらしい？  
+詳細：https://stackoverflow.com/questions/68224361/jetpack-compose-cant-preview-after-updating-to-1-0-0-rc01
+
+```
+composeOptions {
+    kotlinCompilerVersion '1.5.10'
+    kotlinCompilerExtensionVersion '1.0.0-rc01'
+}
+```
+
 追記：2021/06/26：Beta09が出てます。  
 それと、現状？AndroidStudioのテンプレートからEmpty Compose Activityを選択してそのままの状態で実行すると起動しません。KotlinとJetpackComposeのバージョンを上げる必要があります。初見殺しだろこれ
 
