@@ -6,6 +6,9 @@ tags:
 - Kotlin
 - JetpackCompose
 ---
+追記：2021/07/15：1.0.0-rc02が出てます。
+
+
 追記：2021/07/14：1.0.0-rc01が出てます。
 正式リリースも近い。あとなんかAndroid Studioのプレビュー機能が4んでるみたいだから、`ui-tooling`だけは`Beta09`のままがいいらしい？  
 詳細：https://stackoverflow.com/questions/68224361/jetpack-compose-cant-preview-after-updating-to-1-0-0-rc01
