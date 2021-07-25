@@ -49,6 +49,7 @@ pre {
 }
 
 /* pre要素内にあるcodeのBackgroundはいらない */
+
 pre code {
     background-color: initial !important;
 }
@@ -109,4 +110,10 @@ table td {
 
 img {
     max-width: 80%;
+}
+
+/* なんか箇条書きで変にマージンが入る */
+
+li > p {
+    margin-bottom: 0px !important;
 }
