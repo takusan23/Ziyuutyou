@@ -67,6 +67,14 @@ javac -version
 javac 16.0.1
 ```
 
+# 追記：2021/07/28 JAVA_HOMEの設定
+なんか久しぶりにやったらまだJava8使ってんのかよって言われたので直します。
+
+環境変数の設定開いて、システム環境変数の中から`JAVA_HOME`を選んで、`AdoptOpenJDK`のパスを設定します。
+
+![Imgur](https://imgur.com/qna3UJ5.png)
+
+
 # IDEAを入れる
 入れておいてください。Community Editionでいいです
 
@@ -100,6 +108,10 @@ IDEAのスタート画面から、`Get from VCS`を押して、いかのURLを�
 適用したら、このボタンを探して押します。
 
 ![Imgur](https://imgur.com/Q7hdIIO.png)
+
+ボタンが見つからない場合は`IDEA`の右上にある？`Gradle`を押して、`Sync`ボタンを押してもいいです。
+
+![Imgur](https://imgur.com/0ra6jbW.png)
 
 これで終わればいいんですが、これでも同じエラーで進めないときがあります。
 
@@ -405,6 +417,43 @@ IDEA右上の`Gradle`から、`Tasks`>`build`へ進み`build`を選択するこ�
 https://github.com/takusan23/ClickManaita2/tree/1.17-fabric
 
 クローンしたあとブランチ名「1.17-fabric」をチェックアウトしてください。一発でビルド通らないと思う。
+
+# 追記：2021/07/28 1.17.1への対応
+git使ってる場合はコミットするなりブランチ作るなりして現状の環境壊れても大丈夫な状態にしてください。  
+使ってなければどっかにバックアップしておけばいいのでは
+
+`gradle.properties`を、最新の情報に更新します。  
+最新の値は「https://fabricmc.net/versions.html」から確認することが出来ます。
+
+以下一例 (なんかコードブロックの言語にproperties指定したらシンタックスハイライト動いててちょっと感動)
+
+```properties
+kotlin.code.style=official
+org.gradle.jvmargs=-Xmx1G
+
+# Fabric Properties
+	# Check these on https://modmuss50.me/fabric.html
+minecraft_version=1.17.1
+yarn_mappings=1.17.1+build.31
+loader_version=0.11.6
+
+#Fabric api
+fabric_version=0.37.1+1.17
+
+	loom_version=0.8-SNAPSHOT
+
+	# Mod Properties
+	mod_version = 1.0.0
+	maven_group = io.github.takusan23
+	archives_base_name = clickmanaita
+
+# Kotlin
+	kotlin_version=1.5.0
+	fabric_kotlin_version=1.6.0+kotlin.1.5.0
+```
+
+これで後は`Minecraft Client`を起動するだけで1.17.1へ対応できました。  
+マイナーアップデートなのでクラスの変更とか無いけど大型アップデートならそううまく行かないと思う。
 
 # 終わりに
 いつもAndroidで書いてるKotlinでModdingできるので快適。Fabricへ移植したいから会社辞めたい。  
