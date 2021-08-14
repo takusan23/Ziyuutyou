@@ -204,10 +204,25 @@ dependencies {
 そしたら次は`themes.xml`を開き、スプラッシュスクリーン時のテーマを定義します。
 
 ```xml
+<!-- Base application theme. -->
+<style name="Theme.SplashScreenBackport" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/purple_500</item>
+    <item name="colorPrimaryVariant">@color/purple_700</item>
+    <item name="colorOnPrimary">@color/white</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/teal_200</item>
+    <item name="colorSecondaryVariant">@color/teal_700</item>
+    <item name="colorOnSecondary">@color/black</item>
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+</style>
+
 <style name="Theme.OriginalSplashScreen" parent="Theme.SplashScreen">
     <!-- アイコン -->
     <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-    <!-- スプラッシュスクリーン後のテーマ -->
+    <!-- スプラッシュスクリーン後のテーマ。今までAndroidManifestで指定してたテーマね -->
     <item name="postSplashScreenTheme">@style/Theme.SplashScreenBackport</item>
 </style>
 ```
