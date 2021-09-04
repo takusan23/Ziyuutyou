@@ -14,8 +14,8 @@
       <v-avatar left>
         <v-icon>mdi-tag-text-outline</v-icon>
       </v-avatar>
-      {{tag}}
-    </v-chip> 
+      {{ tag }}
+    </v-chip>
   </div>
 </template>
 
@@ -23,6 +23,6 @@
 export default {
   props: ["tags"],
   data: () => ({}),
-  methods: {}
+  methods: {},
 };
 </script>
