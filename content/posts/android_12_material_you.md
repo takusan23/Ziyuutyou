@@ -68,7 +68,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0-alpha03'
     implementation 'androidx.core:core-ktx:1.6.0' // 追加済みの場合はいらない
 
-    // ここ
+    // 以下省略
 }
 ```
 

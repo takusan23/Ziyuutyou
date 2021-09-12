@@ -70,10 +70,10 @@ tags:
 ~~今までで一回だけ聞かれた事がある~~
 
 # <span id="ソフマップAKIBAソフト館">ソフマップAKIBA ソフト館</span>
-写真撮りそこねたので4月の写真を代わりに（次行ったとき取り直してくる）  
+~~写真撮りそこねたので4月の写真を代わりに（次行ったとき取り直してくる）~~ 取り直してきました。ついでに予約してきた。かわいい  
 リニューアル前を知らないので少し残念。
 
-![Imgur](https://imgur.com/YBPz47B.png)
+![Imgur](https://imgur.com/dYNQqBD.png)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12960.043336936349!2d139.771178!3d35.701351!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xec9b4fc028069b57!2z44K944OV44Oe44OD44OXIEFLSUJBIOOCveODleODiOmkqA!5e0!3m2!1sja!2sjp!4v1627226250763!5m2!1sja!2sjp" width="80%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
@@ -102,7 +102,9 @@ Kyash使えました。
 
 # <span id="トレーダー2号店">トレーダー 2号店</span>
 
-写真は取りそこねました。覚えていれば次行ったとき撮ってきます。
+~~写真は取りそこねました。覚えていれば次行ったとき撮ってきます。~~ 撮ってきました。
+
+![Imgur](https://imgur.com/gClfuuz.png)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3240.1229465748465!2d139.77038!3d35.698592!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9fcac2ce87d746d!2z44OI44Os44O844OA44O8IOeni-iRieWOnzLlj7flupc!5e0!3m2!1sja!2sjp!4v1627226930875!5m2!1sja!2sjp" width="80%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
@@ -140,7 +142,7 @@ CDは駿河屋 秋葉原駅前店に置いてありました。
 
 ![Imgur](https://imgur.com/nvF5bEf.png)
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.0393001366185!2d139.77159982922305!3d35.697748998761924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1d4da05555%3A0x6222da3b1962b0eb!2z6ae_5rKz5bGLIOeni-iRieWOn-mnheWJjeW6lw!5e0!3m2!1sja!2sjp!4v1630768780832!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.0393001366185!2d139.77159982922305!3d35.697748998761924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1d4da05555%3A0x6222da3b1962b0eb!2z6ae_5rKz5bGLIOeni-iRieWOn-mnheWJjeW6lw!5e0!3m2!1sja!2sjp!4v1630768780832!5m2!1sja!2sjp" width="80%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
 ゲームCDは二階の奥の隅っこにありました。  
 Kyash Card Lite使えました。
@@ -205,7 +207,7 @@ Kyash使えました。
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25920.96056003467!2d139.75225560007613!3d35.698662792538094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1d08f1b007%3A0x85ae0041177e526a!2z6LK35Y-W6LKp5aOy5biC5aC044Og44O844Op44OzQUtJQkHkuK3lpK7pgJrjgorlupc!5e0!3m2!1sja!2sus!4v1627229846365!5m2!1sja!2sus" width="80%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
 エロゲコーナーは3階です。  
-品揃えは多めだと思う。
+品揃えは多めだと思う。CDは一番奥の棚の端っこにある。
 
 # <span id="K-Books">K-Books 秋葉原本店</span>  
 ↓この建物の3階
