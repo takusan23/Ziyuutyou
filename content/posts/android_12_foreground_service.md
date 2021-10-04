@@ -195,14 +195,14 @@ val notification = Notification.Builder(this, notificationChannelId).apply {
 <service android:name=".ExampleService" android:foregroundServiceType="mediaProjection" />
 ```
 
-- 通知作成時に`Notification.Builder#setShowForegroundImmediately(true)`を指定した
+- 通知作成時に ~~setShowForegroundImmediately(true)~~ `setForegroundServiceBehavior(Notification.FOREGROUND_SERVICE_IMMEDIATE)`を指定した
 
 ```kotlin
 val notification = Notification.Builder(this, notificationChannelId).apply {
     setContentTitle("サービス起動中")
     setContentText("サービス起動テスト")
     setSmallIcon(R.drawable.ic_outline_textsms_24)
-    setShowForegroundImmediately(true) // これ
+    setForegroundServiceBehavior(Notification.FOREGROUND_SERVICE_IMMEDIATE) // これ
 }.build()
 ```
 
