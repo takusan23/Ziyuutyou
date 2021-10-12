@@ -177,3 +177,5 @@ https://github.com/takusan23/USBDebugAutoHide
 https://github.com/takusan23/DeveloperHide
 
 アプリ書きました。そのうちPlayストアに出したい
+
+提出はした、審査が通るかは知らんけど：https://play.google.com/store/apps/details?id=io.github.takusan23.developerhide

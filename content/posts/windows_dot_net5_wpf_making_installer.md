@@ -5,7 +5,6 @@ tags:
 - WPF
 - .NET
 - C#
-- Wix
 ---
 どうもこんばんわ。  
 アインシュタインより愛を込めて APOLLOCRISIS 入手した。箱が二回りぐらい大きいな？  
@@ -179,6 +178,59 @@ regsvr32 ole32.dll
 ![Imgur](https://imgur.com/tgdofmk.png)
 
 以上です。
+
+# 追記：2021/10/07 アイコンを設定する場合
+
+`128 x 128`じゃないとだめです。ソース：https://stackoverflow.com/questions/2041291/how-to-change-windows-applicatoins-default-icon-in-setup-project
+
+ただ、これと別に生まれ変わった`Win11`の`Microsoft Store`では`1080 x 1080`のサイズのアイコンが必要なので、`svg`で作っておくと幸せになれると思います。
+
+![Imgur](https://imgur.com/KXDs6Ws.png)
+
+今回は`InkScape`で作りました。`128 x 128`で`png`に書き出して、`GIMP`で`ico`形式に変更します。
+
+## アイコンを追加
+プロジェクトのプロパティから、リソースを開いて、`ico`ファイルをドラッグアンドドロップします。
+
+![Imgur](https://imgur.com/6t2Weuj.png)
+
+できたら、`Resources`フォルダに追加されるので、`Resources`フォルダ内にある`ico`のプロパティを開いて、`ビルドアクション`を`リソース`にします。必要かどうかはわかりませんが。
+
+![Imgur](https://imgur.com/vGsX36c.png)
+
+## WPFのアイコンを設定
+プロジェクトのプロパティを開いて、アプリケーションを押して、`リソース`の中の`アイコン`を変更します。
+
+![Imgur](https://imgur.com/ofWqAxV.png)
+
+## インストーラーにアイコンを追加
+インストーラープロジェクトを開いて、ここから追加できます。
+
+![Imgur](https://imgur.com/VkyAMB5.png)
+
+## スタートのショートカットのアイコンを設定
+`User's Programs Menu`にあるショートカットのプロパティを開いて、Iconを選んで`Browse`を押します。
+
+![Imgur](https://imgur.com/KAw566a.png)
+
+そしたら、`Browse`を押して
+
+![Imgur](https://imgur.com/TxgRhwN.png)
+
+さっき追加したアイコンを選びます。
+
+![Imgur](https://imgur.com/5X0Guhe.png)
+
+そしたら、`Current icon`に追加されるので、選択して`OK`を押せば終了です。  
+あとはビルドして完成。
+
+## バージョンアップ？
+バージョンの番号をあげます。インストーラーとWPFのアプリそれぞれ変更する必要があります。   
+インストーラーの方はバージョンを変更すると`ProductCode`も生成し直すか聞かれるので生成し直します。
+
+![Imgur](https://imgur.com/aZmk39I.png)
+
+それから、`RemovePreviousVersions`を`True`にすると既存のバージョンをアンインストールしてくれるようになります。
 
 # ソースコード
 
