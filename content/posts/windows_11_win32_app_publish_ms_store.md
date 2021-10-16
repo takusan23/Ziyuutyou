@@ -1,5 +1,5 @@
 ---
-title: Windows 11で生まれ変わったMicrosoft Storeに従来(WPF)のアプリを公開してみた話
+title: Windows 11で生まれ変わったMicrosoft Storeに従来(WPF/Win32)のアプリを公開してみた話
 created_at: 2021-10-12
 tags:
 - Windows11
