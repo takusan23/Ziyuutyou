@@ -1,10 +1,18 @@
 {
     "android": [
         {
-            "title": "たちみどろいど",
-            "description": "非公式のニコニコ動画、生放送クライアント",
-            "link": "https://play.google.com/store/apps/details?id=io.github.takusan23.tatimidroid&hl=ja",
-            "source_code": "https://github.com/takusan23/TatimiDroid"
+            "title": "工事中",
+            "description": "",
+            "link": "https://github.com/takusan23/ChocoDroid",
+            "source_code": "https://github.com/takusan23/ChocoDroid"
+        }
+    ],
+    "windows": [
+        {
+            "title": "いたかーそる",
+            "description": "仮想カーソルと仮想トラックパッドを追加します。",
+            "link": "ms-windows-store://pdp/?productid=XP8BZ1XV93S6X1",
+            "source_code": "https://github.com/takusan23/ItaCursor"
         }
     ],
     "web": [
@@ -26,7 +34,7 @@
     "minecraft": [
         {
             "title": "ClickManaita",
-            "description": "チートMOD。1.12.2 / 1.16.x / Fabric 1.17",
+            "description": "チートMOD。1.12.2 / 1.16.x / Fabric 1.17.x / Forge 1.17.1",
             "link": "https://www.curseforge.com/minecraft/mc-mods/clickmanaita",
             "source_code": "https://github.com/takusan23/ClickManaita2"
         }

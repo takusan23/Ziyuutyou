@@ -12,7 +12,7 @@
         <v-list-item two-line>
           <!-- アイコン -->
           <v-list-item-avatar>
-            <img src="@/static/icon.png" />
+            <img style="max-width:initial" src="@/static/icon.png" />
           </v-list-item-avatar>
           <!-- 自由帳 の部分 -->
           <v-list-item-content>

@@ -91,6 +91,10 @@ export default {
         icon: "mdi-android",
       },
       {
+        title: "Windows",
+        icon: "mdi-microsoft-windows",
+      },
+      {
         title: "Web",
         icon: "mdi-web",
       },
@@ -105,6 +109,8 @@ export default {
     ],
     /** 作ったもの　Android編。JSONから読みあ出す */
     androidList: appsJSON["android"],
+    /** 作ったもの Windows編 */
+    windowsList: appsJSON["windows"],
     /** 作ったもの　Webサイト編 */
     webList: appsJSON["web"],
     akashicEngineList: appsJSON["akashic_engine"],
@@ -128,6 +134,9 @@ export default {
       switch (name) {
         case "Android":
           this.makeAppList = this.androidList;
+          break;
+        case "Windows":
+          this.makeAppList = this.windowsList;
           break;
         case "Web":
           this.makeAppList = this.webList;
