@@ -48,3 +48,6 @@ fun ParentDynamicWidth() {
 
 # 終わりに
 そろそろ寝たいのでここらへんで失礼します。
+
+# 参考リンク
+https://stackoverflow.com/questions/66458270/modifier-wrapcontentwidth-vs-modifier-widthintrinsicsize-max-in-android-jetp
