@@ -329,5 +329,16 @@ tasks.register("exportDependency") {
 
 オープンソースライブラリ一覧画面を作るときに役に立ちそうですね！
 
+# おまけ 2021/11/23
+`build.gradle.kts`後に謎のエラーが出る場合（文法とかはあってるのに）
+
+![Imgur](https://imgur.com/pZA4RPN.png)
+
+まずプロジェクトを閉じるかAndroid Studio自体を閉じます。  
+その後、プロジェクトをエクスプローラー（macOSならあの顔のやつ。Finderだっけ？）で開いて、`.idea`を消すか、適当に名前を変えます。  
+
+そのあと再度Android Studioでプロジェクトを開き、実行ボタンの近くにある`Make Project`ボタン（Ctrl+F9）を押せば治りました。  
+
+
 # 終わりに
 `buildSrc`の話じゃなくてごめん。
