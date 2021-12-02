@@ -194,6 +194,12 @@ Fabricと同じ？
 
 1.18のmdkコピーしたらIDEA開き直して右上の`Gradle`から`Tasks > forgegradle runs > genIntellijRuns`を実行。
 
+### Caused by: java.lang.UnsupportedClassVersionError: net/minecraftforge/fml/loading/targets/FMLClientLaunchHandler has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 60.0
+
+IDEAのFileから、`Project Strcture`を開き、`Project SDK`にJava 17を指定します。
+
+![Imgur](https://imgur.com/dTueBHD.png)
+
 影響あったのは、クリエイティブタブのローカライズがちょっとだけ変わってたって所かな。  
 (そもそもアップデートが大規模過ぎて1.18に分割したって話だっけ？そうなら影響あまりなさそう？)
 
